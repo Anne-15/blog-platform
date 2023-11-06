@@ -1,10 +1,15 @@
 import Image from 'next/image'
 import Hero from '../public/featured.jpg';
 import Card from './components/Card';
+import Footer from './components/Footer';
+import Navbar from './components/Navbar';
+
 
 export default function Home() {
   return (
     <main>
+      {/* navbar */}
+      <Navbar/>
       {/* hero section */}
       <div className='hero-section relative m-4'>
         <Image
@@ -15,7 +20,7 @@ export default function Home() {
         />
         <div className='absolute bottom-0 left-0 p-10 ml-10 mb-5 text-white font-medium'>
           <p className='text-xl'>Featured</p>
-          <h1 className='text-4xl font-bold mt-4'>Breaking into Product Design: Advice from Untitles Founder, Frankie</h1>
+          <h1 className='text-4xl font-bold mt-4'>Breaking into Product Design: Advice from Untitled Founder, Frankie</h1>
           <p className=' mt-4'>Let's get one thing out of the way: you don't need a Bachelor's degree to get into <br /> product design.
           We sat down with Frankie Sulllivan to talk about gatekeeping in <br /> product design and how one can get into this growing industry
           </p>
@@ -30,8 +35,16 @@ export default function Home() {
           <Card/>
           <Card/>
           <Card/>
+          <Card/>
+          <Card/>
+          <Card/>
+        </div>
+        <div className='flex justify-center items-center mt-10 mb-10'>
+          <button className='bg-black text-gray-50 rounded-lg w-56 h-10'>Load More...</button>
         </div>
       </div>
+      {/* footer */}
+      <Footer/>
     </main>
   )
 }
