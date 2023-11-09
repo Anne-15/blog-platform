@@ -1,7 +1,15 @@
+"use client"
 import Link from 'next/link'
-import React from 'react'
+import React, { useState } from 'react'
 
 const Navbar = () => {
+    // const [login, setLoggin] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setIsOpen(!isOpen);
+    }
+
   return (
     <nav className='flex justify-between p-5'>
         <div className='flex gap-3 text-2xl '>
@@ -16,7 +24,9 @@ const Navbar = () => {
                 <li>
                     <Link href={'/'}>Home</Link>
                 </li>
-                <li>Products</li>
+                <li>
+                    <Link href={'/Projects'}>Projects</Link>
+                </li>
                 <li>
                     <Link href={'/Blogs'}>Blogs</Link>
                 </li>
@@ -26,12 +36,27 @@ const Navbar = () => {
             </ul>
         </div>
         <div className='flex gap-10 font-semibold'>
-        <button>
+        {/* <button>
             <Link href={'/Login'}> Login </Link> 
         </button>
         <button className='rounded-lg w-20 h-10 bg-black text-gray-50'>
             <Link href={'/Signup'}>Sign up</Link>
-        </button>
+        </button> */}
+        <div>
+            <button className='rounded-lg w-28 h-10 bg-black text-gray-50' onClick={toggleDropdown}>Add new</button>
+            {isOpen && (
+                <div className="mt-2 absolute origin-top-right right-0 w-44 rounded-lg shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-4 z-50">
+                    <ul role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                        <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <Link href={'/AddPost'}>Add new project</Link>
+                        </li>
+                        <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                            <Link href={'/AddBlog'}>Add new blog</Link>
+                        </li>
+                    </ul>
+                </div>
+            )}
+        </div>
         </div>
     </nav>
   )
