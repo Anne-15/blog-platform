@@ -48,7 +48,7 @@ const Navbar = () => {
                 <div className="mt-2 absolute origin-top-right right-0 w-44 rounded-lg shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-4 z-50">
                     <ul role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                         <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                            <Link href={'/AddPost'}>Add new project</Link>
+                            <Link href={'/AddProject'}>Add new project</Link>
                         </li>
                         <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                             <Link href={'/AddBlog'}>Add new blog</Link>
