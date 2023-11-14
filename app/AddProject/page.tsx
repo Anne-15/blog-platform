@@ -7,7 +7,7 @@ const page = () => {
       <form className='w-full max-w-2xl p-6 space-y-12 rounded-lg'>
         <div className='space-y-12'>
           <div className='border-gray-900/10'>
-            <h2 className='text-base font-semibold leading-7 text-gray-900'>Project Description</h2>
+            <h2 className='text-base font-semibold leading-7 text-gray-900'>Project</h2>
             <p className='mt-1 text-sm leading-6 text-gray-600'>
             This information will be displayed publicly so be careful what you share.
             </p>
