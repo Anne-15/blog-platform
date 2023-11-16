@@ -4,7 +4,7 @@ const Signup = () => {
   return (
     <div className='container mx-auto mt-20'>
       <form className='max-w-md mx-auto p-8 bg-gray-100 rounded-md shadow-md'>
-      <div className='mb-4'>
+        <div className='mb-4'>
           <label htmlFor="email" className='block text-gray-700 text-sm font-bold mb-2'>Full Nmae:</label>
           <input
             type="text"
