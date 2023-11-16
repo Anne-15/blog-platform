@@ -28,19 +28,19 @@ export default function Home() {
       </div>
 
       {/* recent blogs */}
-      <div className='container mx-auto'>
-        <h1 className='mt-10 font-bold text-2xl'>Recent blogs</h1>
+      <div className='container mx-auto mb-20'>
+        <h1 className='mt-10 font-bold text-2xl mx-20'>Recent blogs</h1>
         {/* card */}
         <div className='flex flex-row flex-wrap justify-center gap-10 mt-10'>
           <Card/>
           <Card/>
           <Card/>
-          <Card/>
-          <Card/>
-          <Card/>
         </div>
-        <div className='flex justify-center items-center mt-10 mb-10'>
-          <button className='bg-black text-gray-50 rounded-lg w-56 h-10'>Load More...</button>
+        <h1 className='mt-10 font-bold text-2xl mx-20'>Recent projects</h1>
+        <div className='flex flex-row flex-wrap justify-center gap-10 mt-10'>
+          <Card/>
+          <Card/>
+          <Card/>
         </div>
       </div>
       {/* footer */}
