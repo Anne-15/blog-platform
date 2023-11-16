@@ -21,7 +21,6 @@ const About = () => {
     <>
         <Navbar/>
         <div className='container mx-auto'>
-          <p>My porfolio page about me</p>
           {/* hero section */}
           <section className='flex flex-row justify-around'>
             <Image
@@ -126,6 +125,39 @@ const About = () => {
                     placeholder='********'
                   />
                 </div>
+                <div className='mb-4'>
+                  <label htmlFor="text" className='block text-gray-700 text-sm font-bold mb-2'>Bio:</label>
+                  <div className="mt-2">
+                    <textarea
+                      id="bio"
+                      name="bio"
+                      rows={3}
+                      className="p-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      defaultValue={''}
+                    />
+                  </div>
+                </div>
+
+                <div className="col-span-full my-5">
+                  <label htmlFor="photo" className="block text-gray-700 text-sm font-bold mb-2">
+                    Profile Photo
+                  </label>
+                  <div className="mt-2 flex items-center gap-x-3">
+                    <Image
+                    src={'/profile.svg'}
+                    width={50}
+                    height={50}
+                    alt='photo icon'
+                    />
+                    <button
+                      type="button"
+                      className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+                    >
+                      Change
+                    </button>
+                  </div>
+                </div>
+                
                 <div className='p-2 rounded-xl text-center bg-gray-300 hover:bg-black text-white font-medium text-lg'>
                   <button>Update profile details</button>
                 </div>
