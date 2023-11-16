@@ -22,21 +22,24 @@ const About = () => {
         <Navbar/>
         <div className='container mx-auto'>
           {/* hero section */}
-          <section className='flex flex-row justify-around'>
+          <section className='flex flex-row mx-80 my-12'>
             <Image
-            src={'/aboutme.jpg'}
-            width={100}
-            height={50}
+            src={'/person.jpg'}
+            width={200}
+            height={200}
             alt='my profile'
             className='rounded-full'
             />
-            <div>
-              <p>Section with words about me</p>
+            <div className='ml-40 content-center mt-10'>
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. <br /> Veniam laudantium labore dolores quae dolorum, 
+                distinctio <br /> doloremque repudiandae id enim facilis aliquam <br /> magnam in cupiditate inventore aliquid neque beatae amet voluptas!
+              </p>
             </div>
           </section>
 
           {/* experience */}
-          <section className="mb-10 mt-10 pb-8 shadow-2xl rounded-2xl">
+          <section className="mb-10 mt-10 pb-8 shadow-2xl rounded-2xl mx-16">
             <div className='flex flex-row justify-between mx-36 mb-5 pt-10 mt-10' onClick={ToggleDropDown} style={{ cursor: 'pointer' }}>
               <h1 className='font-bold text-2xl'>Experience</h1>
               <Image
@@ -83,7 +86,7 @@ const About = () => {
             )}
           </section>
           {/* profile update */}
-          <section className="mb-10 mt-10 pb-8 shadow-2xl rounded-2xl">
+          <section className="mb-10 mt-10 pb-8 shadow-2xl rounded-2xl mx-16">
             <div className='flex flex-row justify-between mx-36 mb-5 pt-10 mt-10' onClick={ToggleProfileActive} style={{ cursor: 'pointer' }}>
               <h1 className='font-bold text-2xl'>Profile Settings</h1>
               <Image
