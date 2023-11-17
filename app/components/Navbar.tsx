@@ -37,14 +37,14 @@ const Navbar = () => {
             </ul>
         </div>
         <div className='flex gap-10 font-semibold'>
-            <button>
+            {/* <button>
                 <Link href={'/Login'}> Login </Link> 
             </button>
             <button className='rounded-lg w-20 h-10 bg-black text-gray-50'>
                 <Link href={'/Signup'}>Sign up</Link>
-            </button>
-            {/* <div>
-                <button className='rounded-lg w-28 h-10 bg-black text-gray-50' onClick={toggleDropdown}>My Profile</button>
+            </button> */}
+            <div>
+                {/* <button className='rounded-lg w-28 h-10 bg-black text-gray-50' onClick={toggleDropdown}>My Profile</button> */}
                 <Image
                 src={'/profile.svg'}
                 width={40}
@@ -63,7 +63,7 @@ const Navbar = () => {
                                 <Link href={'/AddBlog'}>Add new blog</Link>
                             </li>
                             <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                <Link href={'/'}>Update Profile</Link>
+                                <Link href={'/Signup'}>Update Profile</Link>
                             </li>
                             <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                 <Link href={'/'}>Log out</Link>
@@ -71,7 +71,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                 )}
-            </div> */}
+            </div>
         </div>
     </nav>
   )
