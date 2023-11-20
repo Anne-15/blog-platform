@@ -26,7 +26,7 @@ const CardBlogs = () => {
           width={20}
           height={20}
           alt='Hero image'
-          className='mt-3'
+          className=''
           />
         </div>
         <p className='mt-3 text-sm'>
