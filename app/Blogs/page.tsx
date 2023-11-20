@@ -10,23 +10,25 @@ const Blogs = () => {
   return (
     <main>
         <Navbar/>
-        <div className='container mx-auto flex flex-row gap-4 mb-10'>
-            <article className='tracking-wide leading-loose flex basis-1/4 flex-col h-screen'>
-                <ul className='flex flex-col gap-2 p-4'>
-                    <li className='p-2 rounded-lg hover:bg-gray-200 cursor-pointer'>Recent Blogs</li>
-                    <li className='p-2 rounded-lg hover:bg-gray-200 cursor-pointer'>Prouct Design</li>
-                    <li className='p-2 rounded-lg hover:bg-gray-200 cursor-pointer'>Software Development</li>
-                </ul>
-            </article>
-            <section className='space-y-8'>
-                <h1 id='recent' className='font-bold text-2xl'>My Blogs</h1>
+        <div className='container mx-auto flex flex-row space-x-11 my-10 justify-around'>
+            <section className='space-y-8 w-4/6 ml-20'>
+                <h1 id='recent' className='font-bold text-2xl mx-10'>My Blogs</h1>
                 {/* <Card/> */}
-                <div className='space-y-10'>
+                <div className='space-y-8 mx-10'>
+                    <CardBlogs/>
                     <CardBlogs/>
                     <CardBlogs/>
                     <CardBlogs/>
                 </div>
             </section>
+            <article className='tracking-wide leading-loose flex flex-col mt-14'>
+                <ul className='flex flex-col gap-2 p-4 '>
+                    <li className='p-2 rounded-lg hover:bg-gray-200 cursor-pointer'>Recent Blogs</li>
+                    <li className='p-2 rounded-lg hover:bg-gray-200 cursor-pointer'>Prouct Design</li>
+                    <li className='p-2 rounded-lg hover:bg-gray-200 cursor-pointer'>Software Development</li>
+                </ul>
+            </article>
+            
         </div>       
         <Footer/>
     </main>
