@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 const Footer = () => {
   return (
-    <div className='bottom-0 left-0 right-0 bg-black p-4 rounded-2xl flex justify-between'>
+    <div className='bottom-0 left-0 right-0 bg-black p-4 flex justify-between'>
         {/* logo */}
         <div className='flex items-center gap-3 text-2xl m-11'>
           <button className='rounded-full bg-white w-8 h-8 text-black font-bold'>R</button>

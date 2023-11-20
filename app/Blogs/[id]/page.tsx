@@ -1,5 +1,6 @@
 import Footer from '@/app/components/Footer'
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 const page = () => {
@@ -21,19 +22,24 @@ const page = () => {
         <div className='w-full max-w-2xl p-6 space-y-10'>
           {/* title */}
           <h1 className='font-bold text-3xl'>Migration to Linear 101</h1>
-            {/* description */}
-            <div className='font-medium text-sm italic'>
-              <p>Linear helps streamline software projects, sprints, tasks and bug tracking. Here is how to get started</p>
-            </div>
-            {/* body */}
-            <div className='text-base'>
-              <p>Linear helps streamline software projects, sprints, tasks and bug tracking. Here is how to get started</p>
-            </div>
-            {/* summary and links */}
-            <h2 className='font-bold text-2xl'>Conclusions and Quotations</h2>
-            <div className='text-base'>
-              <p>Linear helps streamline software projects, sprints, tasks and bug tracking. Here is how to get started</p>
-            </div>
+          {/* description */}
+          <div className='font-medium text-sm italic'>
+            <p>Linear helps streamline software projects, sprints, tasks and bug tracking. Here is how to get started</p>
+          </div>
+          {/* body */}
+          <div className='text-base'>
+            <p>Linear helps streamline software projects, sprints, tasks and bug tracking. Here is how to get started</p>
+          </div>
+          {/* summary and links */}
+          <h2 className='font-bold text-2xl'>Conclusions and Quotations</h2>
+          <div className='text-base'>
+            <p>Linear helps streamline software projects, sprints, tasks and bug tracking. Here is how to get started</p>
+          </div>
+          <div>
+            <Link href={'/Blogs'}>
+              <button>Back</button>
+            </Link>
+          </div>
         </div>
       </section>
       <Footer/>
