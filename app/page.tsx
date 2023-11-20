@@ -18,7 +18,10 @@ export default function Home() {
           alt='Hero image'
           className='rounded-2xl'
         />
-        <div className='absolute bottom-0 left-0 p-10 ml-10 mb-5 text-white font-medium'>
+        {/* <div className='absolute top-0 left-0 flex justify-between text-white font-medium'>
+          <Navbar/>
+        </div> */}
+        <div className='absolute bottom-0 left-0 p-10 ml-10 mb-20 w-1/2 text-white font-medium'>
           <p className='text-xl'>Featured</p>
           <h1 className='text-4xl font-bold mt-4'>Breaking into Product Design: Advice from Untitled Founder, Frankie</h1>
           <p className=' mt-4'>Let's get one thing out of the way: you don't need a Bachelor's degree to get into <br /> product design.
@@ -28,10 +31,10 @@ export default function Home() {
       </div>
 
       {/* recent blogs */}
-      <div className='container mx-auto mb-20'>
-        <h1 className='mt-10 font-bold text-2xl mx-20'>Recent blogs</h1>
+      <div className='relative container mx-auto mb-20'>
+        {/* <h1 className='mt-10 font-bold text-2xl mx-20'>Recent blogs</h1> */}
         {/* card */}
-        <div className='flex flex-row flex-wrap justify-center gap-10 mt-10'>
+        <div className='flex flex-row flex-wrap justify-center gap-10 -mt-14 z-50'>
           <Card/>
           <Card/>
           <Card/>
