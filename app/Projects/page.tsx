@@ -33,6 +33,7 @@ const page = () => {
                 <CardProjects/>
                 <CardProjects/>
                 <CardProjects/>
+                <CardProjects/>
             </section>
         </div>
         <Footer/>
