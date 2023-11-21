@@ -3,6 +3,7 @@ import Hero from '../public/featured.jpg';
 import Card from './components/Card';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
+import Link from 'next/link';
 
 
 export default function Home() {
@@ -21,7 +22,7 @@ export default function Home() {
         {/* <div className='absolute top-0 left-0 flex justify-between text-white font-medium'>
           <Navbar/>
         </div> */}
-        <div className='absolute bottom-0 left-0 p-10 ml-10 mb-20 w-1/2 text-white font-medium'>
+        <div className='absolute bottom-0 left-0 p-10 ml-10 text-white font-medium'>
           <p className='text-xl'>Featured</p>
           <h1 className='text-4xl font-bold mt-4'>Breaking into Product Design: Advice from Untitled Founder, Frankie</h1>
           <p className=' mt-4'>Let's get one thing out of the way: you don't need a Bachelor's degree to get into <br /> product design.
@@ -31,16 +32,44 @@ export default function Home() {
       </div>
 
       {/* recent blogs */}
-      <div className='relative container mx-auto mb-20'>
-        {/* <h1 className='mt-10 font-bold text-2xl mx-20'>Recent blogs</h1> */}
+      <div className='container mx-auto mb-20'>
+        <div className='flex justify-between mt-10'>
+          <h1 className=' font-bold text-2xl mx-20'>Recent blogs</h1>
+          <Link href={'/Blogs'}>
+            <div className='flex space-x-3 mr-16'>
+              <p className='font-bold text-lg'>view more</p>
+              <Image
+              src={'/arrow-up-right.svg'}
+              alt='view more'
+              width={15}
+              height={15}
+              className=''
+              />
+            </div>
+          </Link>
+        </div>
         {/* card */}
-        <div className='flex flex-row flex-wrap justify-center gap-10 -mt-14 z-50'>
+        <div className='flex flex-row flex-wrap mx-24 gap-10 mt-10'>
           <Card/>
           <Card/>
           <Card/>
         </div>
-        <h1 className='mt-10 font-bold text-2xl mx-20'>Recent projects</h1>
-        <div className='flex flex-row flex-wrap justify-center gap-10 mt-10'>
+        <div className='flex justify-between mt-10'>
+          <h1 className=' font-bold text-2xl mx-20'>Recent projects</h1>
+          <Link href={'/Projects'}>
+            <div className='flex space-x-3 mr-16'>
+              <p className='font-bold text-lg'>view more</p>
+              <Image
+              src={'/arrow-up-right.svg'}
+              alt='view more'
+              width={15}
+              height={15}
+              className=''
+              />
+            </div>
+          </Link>
+        </div>
+        <div className='flex flex-row flex-wrap mx-24 gap-10 mt-10'>
           <Card/>
           <Card/>
           <Card/>
