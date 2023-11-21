@@ -11,12 +11,12 @@ export default function Home() {
       {/* navbar */}
       <Navbar/>
       {/* hero section */}
-      <div className='hero-section relative m-4'>
+      <div className='hero-section relative'>
         <Image
           src={Hero}
           width={1700}
           alt='Hero image'
-          className='rounded-2xl'
+          className='w-full'
         />
         {/* <div className='absolute top-0 left-0 flex justify-between text-white font-medium'>
           <Navbar/>
