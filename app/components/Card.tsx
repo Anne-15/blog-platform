@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const Card = () => {
   return (
@@ -11,7 +12,18 @@ const Card = () => {
         alt='Hero image'
         className='w-full'
         />
-        <h1 className='mt-5 font-bold text-lg'>Migration to Linear 101</h1>
+        <Link href={'/Blogs/id'}>
+          <div className='flex flex-row justify-between mt-5'>
+            <h1 className='font-bold text-xl'>Migration to linear 101</h1>
+            <Image
+            src={'/arrow-up-right.svg'}
+            width={20}
+            height={20}
+            alt='Hero image'
+            className=''
+            />
+          </div>
+        </Link>
         <p className='mt-3'>Linear helps streamline software projects, sprints, tasks and bug tracking. Here is how to get started</p>
         {/* <div className='flex flex-row gap-4 mt-5 font-medium'>
           <Image

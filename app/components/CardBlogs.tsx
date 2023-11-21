@@ -1,5 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const CardBlogs = () => {
   return (
@@ -19,16 +20,19 @@ const CardBlogs = () => {
       </div>
       
       <div className='flex flex-col w-1/2'>
-        <div className='flex flex-row justify-between'>
-          <h1 className=' font-bold text-xl'>Breaking the cycle with negative self talk: Strategies for developing a growth mindset</h1>
-          <Image
-          src={'/arrow-up-right.svg'}
-          width={20}
-          height={20}
-          alt='Hero image'
-          className=''
-          />
-        </div>
+        <Link href={'/Blogs/id'}>
+          <div className='flex flex-row justify-between'>
+            <h1 className=' font-bold text-xl'>Breaking the cycle with negative self talk: Strategies for developing a growth mindset</h1>
+            <Image
+            src={'/arrow-up-right.svg'}
+            width={20}
+            height={20}
+            alt='Hero image'
+            className=''
+            />
+          </div>
+        </Link>
+        
         <p className='mt-3 text-sm'>
           Negative self-talk can hold us back and prevent us from reaching out full potential. In this article, we'll explore the concept of a growth
           mindset and share potential strategies for developing a more positive and growth-oriented way of thinking.
