@@ -1,29 +1,82 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
 import Image from 'next/image'
+import axios from 'axios';
+import Link from 'next/link';
 
 const page = () => {
+
+  const [title,  setTitle] = useState("");
+  const [category,  setCategory] = useState("");
+  const [desc,  setDesc] = useState("");
+  const [body, setBody] = useState("");
+  const [summary, setSummary] = useState("");
+
+  // const [blog, setBlog] = useState("");
+
+  const url = 'http://localhost:6060/blogs/add'
+  
+  async function handleSubmit(e: { preventDefault: () => void; }) {
+    e.preventDefault()
+    const blogData = {
+      title: title,
+      category: category,
+      desc: desc,
+      body: body,
+      summary: summary,
+    };
+
+    try {
+      await axios
+      .post(url, {blogData})
+      .then((result) => console.log(result))
+      .catch((err) => console.log("Incoming error: ", err))
+    } catch (error) {
+      console.log(error)
+    }
+  }  
+
   return (
     <div className='min-h-screen flex items-center justify-center'>
-      <form className='w-full max-w-2xl p-6 space-y-12 rounded-lg'>
+      <form className='w-full max-w-2xl p-6 space-y-12 rounded-lg' onSubmit={handleSubmit}>
         <div className='space-y-12'>
           <div className='border-gray-900/10'>
             <h2 className='text-base font-semibold leading-7 text-gray-900'>Blog</h2>
-            <p className='mt-1 text-sm leading-6 text-gray-600'>
-            This information will be displayed publicly so be careful what you share.
-            </p>
 
-            <div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
+            <div className='mt-5 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
               <div className='sm:col-span-4'>
                 <label htmlFor="username" className='block text-sm font-medium leading-6 text-gray-900'>Title</label>
                 <div className='mt-2'>
-                  <div className='flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md'>
+                  <div className='flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset  sm:max-w-md'>
                     <input
                       type="text"
                       name="title"
                       id="title"
                       autoComplete="title"
-                      className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                      className="block flex-1 border-0 bg-transparent p-1.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                       placeholder="Project title"
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
+                  />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className='mt-5 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
+              <div className='sm:col-span-4'>
+                <label htmlFor="username" className='block text-sm font-medium leading-6 text-gray-900'>Category</label>
+                <div className='mt-2'>
+                  <div className='flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset  sm:max-w-md'>
+                    <input
+                      type="text"
+                      name="title"
+                      id="title"
+                      autoComplete="title"
+                      className="block flex-1 border-0 bg-transparent p-1.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                      placeholder="Category"
+                      value={category}
+                      onChange={(e) => setCategory(e.target.value)}
                   />
                   </div>
                 </div>
@@ -39,8 +92,10 @@ const page = () => {
                   id="about"
                   name="about"
                   rows={3}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
                   defaultValue={''}
+                  value={desc}
+                  onChange={(e) => setDesc(e.target.value)}
                 />
               </div>
               <p className="mt-3 text-sm leading-6 text-gray-600">Write a brief introduction about the topic.</p>
@@ -62,7 +117,7 @@ const page = () => {
                   <div className="mt-4 flex text-sm leading-6 text-gray-600">
                     <label
                       htmlFor="file-upload"
-                      className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
+                      className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2  focus-within:ring-offset-2 hover:text-indigo-500"
                     >
                       <span>Upload a file</span>
                       <input id="file-upload" name="file-upload" type="file" className="sr-only" />
@@ -87,8 +142,10 @@ const page = () => {
                     id="about"
                     name="about"
                     rows={3}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
                     defaultValue={''}
+                    value={body}
+                    onChange={(e) => setBody(e.target.value)}
                   />
                 </div>
                 <p className="mt-3 text-sm leading-6 text-gray-600">Write your heart out.</p>
@@ -103,8 +160,10 @@ const page = () => {
                     id="about"
                     name="about"
                     rows={3}
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                     defaultValue={''}
+                    value={summary}
+                    onChange={(e) => setSummary(e.target.value)}
                   />
                 </div>
                 <p className="mt-3 text-sm leading-6 text-gray-600">Write a summary of the project and the main take away points.</p>
@@ -114,12 +173,15 @@ const page = () => {
           </div>
         </div>
         <div className="flex items-center justify-end gap-x-6">
-          <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
-            Cancel
-          </button>
+          <Link href={'/Blogs'}>
+            <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
+              Cancel
+            </button>
+          </Link>
+          
           <button
             type="submit"
-            className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
           >
             Save
           </button>
