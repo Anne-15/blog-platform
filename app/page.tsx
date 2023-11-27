@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import Hero from '../public/featured.jpg';
-import Card from './components/Card';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Link from 'next/link';

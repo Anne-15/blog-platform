@@ -1,26 +1,49 @@
 "use client"
 import React, { useState } from 'react'
 import Image from 'next/image'
-
-const sendData =async () => {
-  const [data,  setData] = useState();
-
-  // const handleSubmit = (e) => {
-  //  e.preventDefault() 
-  // }
-  // const blogData = await fetch('http://localhost:6060/blogs/add').then((res) => res.body)
-  // return blogData
-}
+import axios from 'axios';
+import Link from 'next/link';
 
 const page = () => {
+
+  const [title,  setTitle] = useState("");
+  const [category,  setCategory] = useState("");
+  const [desc,  setDesc] = useState("");
+  const [body, setBody] = useState("");
+  const [summary, setSummary] = useState("");
+
+  // const [blog, setBlog] = useState("");
+
+  const url = 'http://localhost:6060/blogs/add'
+  
+  async function handleSubmit(e: { preventDefault: () => void; }) {
+    e.preventDefault()
+    const blogData = {
+      title: title,
+      category: category,
+      desc: desc,
+      body: body,
+      summary: summary,
+    };
+
+    try {
+      await axios
+      .post(url, {blogData})
+      .then((result) => console.log(result))
+      .catch((err) => console.log("Incoming error: ", err))
+    } catch (error) {
+      console.log(error)
+    }
+  }  
+
   return (
     <div className='min-h-screen flex items-center justify-center'>
-      <form className='w-full max-w-2xl p-6 space-y-12 rounded-lg'>
+      <form className='w-full max-w-2xl p-6 space-y-12 rounded-lg' onSubmit={handleSubmit}>
         <div className='space-y-12'>
           <div className='border-gray-900/10'>
             <h2 className='text-base font-semibold leading-7 text-gray-900'>Blog</h2>
 
-            <div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
+            <div className='mt-5 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
               <div className='sm:col-span-4'>
                 <label htmlFor="username" className='block text-sm font-medium leading-6 text-gray-900'>Title</label>
                 <div className='mt-2'>
@@ -32,13 +55,15 @@ const page = () => {
                       autoComplete="title"
                       className="block flex-1 border-0 bg-transparent p-1.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                       placeholder="Project title"
+                      value={title}
+                      onChange={(e) => setTitle(e.target.value)}
                   />
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className='mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
+            <div className='mt-5 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
               <div className='sm:col-span-4'>
                 <label htmlFor="username" className='block text-sm font-medium leading-6 text-gray-900'>Category</label>
                 <div className='mt-2'>
@@ -50,6 +75,8 @@ const page = () => {
                       autoComplete="title"
                       className="block flex-1 border-0 bg-transparent p-1.5 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                       placeholder="Category"
+                      value={category}
+                      onChange={(e) => setCategory(e.target.value)}
                   />
                   </div>
                 </div>
@@ -67,6 +94,8 @@ const page = () => {
                   rows={3}
                   className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
                   defaultValue={''}
+                  value={desc}
+                  onChange={(e) => setDesc(e.target.value)}
                 />
               </div>
               <p className="mt-3 text-sm leading-6 text-gray-600">Write a brief introduction about the topic.</p>
@@ -115,6 +144,8 @@ const page = () => {
                     rows={3}
                     className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset  sm:text-sm sm:leading-6"
                     defaultValue={''}
+                    value={body}
+                    onChange={(e) => setBody(e.target.value)}
                   />
                 </div>
                 <p className="mt-3 text-sm leading-6 text-gray-600">Write your heart out.</p>
@@ -131,6 +162,8 @@ const page = () => {
                     rows={3}
                     className="block w-full rounded-md border-0 p-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                     defaultValue={''}
+                    value={summary}
+                    onChange={(e) => setSummary(e.target.value)}
                   />
                 </div>
                 <p className="mt-3 text-sm leading-6 text-gray-600">Write a summary of the project and the main take away points.</p>
@@ -140,9 +173,12 @@ const page = () => {
           </div>
         </div>
         <div className="flex items-center justify-end gap-x-6">
-          <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
-            Cancel
-          </button>
+          <Link href={'/Blogs'}>
+            <button type="button" className="text-sm font-semibold leading-6 text-gray-900">
+              Cancel
+            </button>
+          </Link>
+          
           <button
             type="submit"
             className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
@@ -156,7 +192,3 @@ const page = () => {
 }
 
 export default page
-
-function aync() {
-  throw new Error('Function not implemented.')
-}

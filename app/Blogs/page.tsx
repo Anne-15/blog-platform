@@ -1,7 +1,6 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
-import Card from '../components/Card'
 import CardBlogs from '../components/CardBlogs'
 import Image from 'next/image'
 
