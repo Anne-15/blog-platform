@@ -4,6 +4,7 @@ import Card from './components/Card';
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Link from 'next/link';
+import Cards from './components/Cards';
 
 
 export default function Home() {
@@ -50,9 +51,59 @@ export default function Home() {
         </div>
         {/* card */}
         <div className='flex flex-row flex-wrap mx-24 gap-10 mt-10'>
-          <Card/>
-          <Card/>
-          <Card/>
+          <Cards 
+            title='Migration to linear 101'
+            imageSrc={'/card.jpg'}
+            width1={300}
+            height1={200}
+            altText1={'Hero image'}
+            linkTo={'/Blogs/id'}
+            desc={'Linear helps streamline software projects, sprints, tasks and bug tracking. Here is how to get started'} 
+            linkSrc={'/arrow-up-right.svg'} 
+            width2={20} 
+            height2={20} 
+            altText2={'Hero image'}
+          />
+          <Cards 
+            title='Migration to linear 101'
+            imageSrc={'/card.jpg'}
+            width1={300}
+            height1={200}
+            altText1={'Hero image'}
+            linkTo={'/Blogs/id'}
+            desc={'Linear helps streamline software projects, sprints, tasks and bug tracking. Here is how to get started'} 
+            linkSrc={'/arrow-up-right.svg'} 
+            width2={20} 
+            height2={20} 
+            altText2={'Hero image'}
+          />
+          <Cards 
+            title='Migration to linear 101'
+            imageSrc={'/card.jpg'}
+            width1={300}
+            height1={200}
+            altText1={'Hero image'}
+            linkTo={'/Blogs/id'}
+            desc={'Linear helps streamline software projects, sprints, tasks and bug tracking. Here is how to get started'} 
+            linkSrc={'/arrow-up-right.svg'} 
+            width2={20} 
+            height2={20} 
+            altText2={'Hero image'}
+          />
+          <Cards 
+            title='Migration to linear 101'
+            imageSrc={'/card.jpg'}
+            width1={300}
+            height1={200}
+            altText1={'Hero image'}
+            linkTo={'/Blogs/id'}
+            desc={'Linear helps streamline software projects, sprints, tasks and bug tracking. Here is how to get started'} 
+            linkSrc={'/arrow-up-right.svg'} 
+            width2={20} 
+            height2={20} 
+            altText2={'Hero image'}
+          />
+          
         </div>
         <div className='flex justify-between mt-10'>
           <h1 className=' font-bold text-2xl mx-20'>Recent projects</h1>
@@ -70,9 +121,59 @@ export default function Home() {
           </Link>
         </div>
         <div className='flex flex-row flex-wrap mx-24 gap-10 mt-10'>
-          <Card/>
-          <Card/>
-          <Card/>
+        <Cards 
+          title='Migration to linear 101'
+          imageSrc={'/card.jpg'}
+          width1={300}
+          height1={200}
+          altText1={'Hero image'}
+          linkTo={'/Projects/id'}
+          desc={'Linear helps streamline software projects, sprints, tasks and bug tracking. Here is how to get started'} 
+          linkSrc={'/arrow-up-right.svg'} 
+          width2={20} 
+          height2={20} 
+          altText2={'Hero image'}
+        />
+        <Cards 
+          title='Migration to linear 101'
+          imageSrc={'/card.jpg'}
+          width1={300}
+          height1={200}
+          altText1={'Hero image'}
+          linkTo={'/Projects/id'}
+          desc={'Linear helps streamline software projects, sprints, tasks and bug tracking. Here is how to get started'} 
+          linkSrc={'/arrow-up-right.svg'} 
+          width2={20} 
+          height2={20} 
+          altText2={'Hero image'}
+        />
+        <Cards 
+          title='Migration to linear 101'
+          imageSrc={'/card.jpg'}
+          width1={300}
+          height1={200}
+          altText1={'Hero image'}
+          linkTo={'/Projects/id'}
+          desc={'Linear helps streamline software projects, sprints, tasks and bug tracking. Here is how to get started'} 
+          linkSrc={'/arrow-up-right.svg'} 
+          width2={20} 
+          height2={20} 
+          altText2={'Hero image'}
+        />
+        <Cards 
+          title='Migration to linear 101'
+          imageSrc={'/card.jpg'}
+          width1={300}
+          height1={200}
+          altText1={'Hero image'}
+          linkTo={'/Projects/id'}
+          desc={'Linear helps streamline software projects, sprints, tasks and bug tracking. Here is how to get started'} 
+          linkSrc={'/arrow-up-right.svg'} 
+          width2={20} 
+          height2={20} 
+          altText2={'Hero image'}
+        />
+          
         </div>
       </div>
       {/* footer */}
