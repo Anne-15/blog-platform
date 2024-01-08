@@ -2,7 +2,11 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
-const CardProjects = () => {
+interface Category{
+  category: string;
+}
+
+const CardProjects: React.FC<Category> = ({category}) => {
   return (
     <div className='card'>
       <div>
@@ -38,7 +42,7 @@ const CardProjects = () => {
         <p className='mt-3'>Jonathan Wills</p>
         <p className='mt-3'>19 Jan 2022</p>
       </div> */}
-      <span className="inline-flex items-center rounded-md bg-purple-50 px-2 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/10 mt-5">Product Design</span>
+      <span className="inline-flex items-center rounded-md bg-purple-50 px-2 py-1 text-xs font-medium text-purple-700 ring-1 ring-inset ring-purple-700/10 mt-5">{category}</span>
     </div>
   )
 }
