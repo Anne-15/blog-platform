@@ -14,7 +14,7 @@ const page = () => {
 
   // const [blog, setBlog] = useState("");
 
-  const url = 'http://localhost:6060/blogs/add'
+  const url = 'http://localhost:8000/blogs/add' 
   
   async function handleSubmit(e: { preventDefault: () => void; }) {
     e.preventDefault()
