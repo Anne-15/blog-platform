@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Hero from "../public/featured.jpg";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";

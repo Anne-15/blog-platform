@@ -1,7 +1,7 @@
 "use client"
 import Link from 'next/link'
 import React, { useState } from 'react'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 
 const Navbar = () => {
     // const [login, setLoggin] = useState(true);

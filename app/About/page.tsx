@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react'
 import Navbar from '../components/Navbar'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import Footer from '../components/Footer'
 
 const About = () => {

@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 import axios from 'axios';
 import Link from 'next/link';
 
