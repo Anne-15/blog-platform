@@ -28,11 +28,10 @@ const CardBlogs: React.FC<CardBlog> = ({title, imageSrc, linkSrc, width1, height
         alt={altText1}
         className='rounded-2xl'
         />
-        <div className='absolute top-0 left-0 w-full h-full bg-black opacity-30 rounded-2xl'></div>
-        <p className='absolute top-5 left-5 z-10 inline-flex items-center rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10'>
-          {category}
-        </p>
-      </div>
+          <p className='absolute top-5 left-5 z-10 inline-flex items-center rounded-md bg-red-100 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10'>
+            {category}
+          </p>
+        </div>
       
       <div className='flex flex-col w-1/2'>
         <Link href={linkSrc}>

@@ -20,20 +20,12 @@ const Navbar = () => {
             </h1>
         </div>
         
-        <div>
+        <div className='md:flex'>
             <ul className='flex flex-row gap-10 font-semibold'>
-                <li>
-                    <Link href={'/'}>Home</Link>
-                </li>
-                <li>
-                    <Link href={'/Projects'}>Projects</Link>
-                </li>
-                <li>
-                    <Link href={'/Blogs'}>Blogs</Link>
-                </li>
-                <li>
-                    <Link href={'/About'}>About us</Link>
-                </li>
+                <li><Link href={'/'}>Home</Link></li>
+                <li><Link href={'/Projects'}>Projects</Link></li>
+                <li><Link href={'/Blogs'}>Blogs</Link></li>
+                <li><Link href={'/About'}>About us</Link></li>
             </ul>
         </div>
         <div className='flex gap-10 font-semibold'>
