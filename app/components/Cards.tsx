@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from "next/legacy/image"
+import Image from "next/image"
 import Link from 'next/link'
 
 interface CardItems{
@@ -20,27 +20,33 @@ const Cards: React.FC<CardItems> = ({title, imageSrc, linkSrc, width1, height1, 
   return (
     <div className='card'>
         <Image
-        src={imageSrc}
-        width={width1}
-        height={height1}
-        alt={altText1}
-        className='w-full'
-        />
+          src={imageSrc}
+          width={width1}
+          height={height1}
+          alt={altText1}
+          className='w-full'
+          style={{
+            maxWidth: "100%",
+            height: "auto"
+          }} />
         <Link href={linkTo}>
           <div className='flex flex-row justify-between mt-5'>
             <h1 className='font-bold text-xl'>{title}</h1>
             <Image
-            src={linkSrc}
-            width={width2}
-            height={height2}
-            alt={altText2}
-            className=''
-            />
+              src={linkSrc}
+              width={width2}
+              height={height2}
+              alt={altText2}
+              className=''
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </div>
         </Link>
         <p className='mt-3'>{desc}</p>
     </div>
-  )
+  );
 }
 
 export default Cards

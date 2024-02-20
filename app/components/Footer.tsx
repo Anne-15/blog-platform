@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from "next/legacy/image"
+import Image from "next/image"
 
 const Footer = () => {
   return (
@@ -18,7 +18,10 @@ const Footer = () => {
               height={30}
               alt='GitHub'
               className='cursor-pointer'
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </a>
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
             <Image
@@ -27,7 +30,10 @@ const Footer = () => {
               height={30}
               alt='Instagram'
               className='cursor-pointer ml-4'
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </a>
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
             <Image
@@ -36,7 +42,10 @@ const Footer = () => {
               height={30}
               alt='Linkedin'
               className='cursor-pointer ml-4'
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </a>
           <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
             <Image
@@ -45,11 +54,14 @@ const Footer = () => {
               height={30}
               alt='Mail'
               className='cursor-pointer ml-4'
-            />
+              style={{
+                maxWidth: "100%",
+                height: "auto"
+              }} />
           </a>
         </div>
     </div>
-  )
+  );
 }
 
 export default Footer

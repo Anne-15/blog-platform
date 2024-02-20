@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import Image from "next/legacy/image"
+import Image from "next/image"
 
 const Signup = () => {
   return (
@@ -104,11 +104,14 @@ const Signup = () => {
               </label>
               <div className="mt-2 flex items-center gap-x-3">
                 <Image
-                src={'/profile.svg'}
-                width={50}
-                height={50}
-                alt='photo icon'
-                />
+                  src={'/profile.svg'}
+                  width={50}
+                  height={50}
+                  alt='photo icon'
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto"
+                  }} />
                 <button
                   type="button"
                   className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
@@ -122,11 +125,14 @@ const Signup = () => {
               <div className='flex flex-row justify-between my-10'>
                 <h2 className="text-xl font-semibold leading-7 text-gray-900">Work Experience</h2>
                 <Image
-                src={'/plus.svg'}
-                width={25}
-                height={25}
-                alt='add new'
-                />
+                  src={'/plus.svg'}
+                  width={25}
+                  height={25}
+                  alt='add new'
+                  style={{
+                    maxWidth: "100%",
+                    height: "auto"
+                  }} />
               </div>
               <div className='mt-5 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6'>
                 <div className="sm:col-span-3">
@@ -222,7 +228,7 @@ const Signup = () => {
         </div>
       </form>
     </div>
-  )
+  );
 }
 
 export default Signup
