@@ -17,7 +17,7 @@ export default function Home() {
             <Image
               src={Hero}
               alt="Hero image"
-              className=""
+              className="rounded-md"
               fill
               sizes="100vw"
             />
@@ -34,13 +34,13 @@ export default function Home() {
 
         {/* recent blogs */}
         <div className="mb-20">
-          <div className="flex flex-col md:flex-row justify-between md:items-start px-4 py-4 md:my-2">
+          <div className="flex flex-col md:flex-row justify-between md:items-start py-4 md:my-2">
             <h1 className="font-bold text-lg md:text-2xl">
               Featured Projects
             </h1>
           </div>
           {/* card */}
-          <div className="justify-center items-start flex flex-col md:flex-row flex-wrap gap-6 md:gap-8 ">
+          <div className="justify-start items-start flex flex-col md:flex-row flex-wrap gap-6 md:gap-14 ">
             <Cards
               title="Migration to linear 101"
               imageSrc={"/card.jpg"}
@@ -87,89 +87,40 @@ export default function Home() {
               altText2={"Hero image"}
             />
           </div>
-          {/* <div className="flex flex-col md:flex-row justify-between items-center md:items-start mt-10">
-            <h1 className="font-bold text-lg md:text-2xl mx-6 md:mx-20">
-              Recent projects
-            </h1>
-            <Link href={"/Projects"}>
-              <div className="flex space-x-3 mt-4 md:mt-0">
-                <p className="font-bold text-sm md:text-lg">view more</p>
-                <Image
-                  src={"/arrow-up-right.svg"}
-                  alt="view more"
-                  width={15}
-                  height={15}
-                  className=""
-                  style={{
-                    maxWidth: "100%",
-                    height: "auto",
-                  }}
-                />
-              </div>
-            </Link>
-          </div> */}
-          {/* <div className="flex flex-col md:flex-row flex-wrap mx-6 md:mx-24 gap-6 md:gap-10 mt-4 md:mt-10">
-            <Cards
-              title="Migration to linear 101"
-              imageSrc={"/card.jpg"}
-              width1={300}
-              height1={200}
-              altText1={"Hero image"}
-              linkTo={"/Projects/id"}
-              desc={
-                "Linear helps streamline software projects, sprints, tasks and bug tracking. Here is how to get started"
-              }
-              linkSrc={"/arrow-up-right.svg"}
-              width2={20}
-              height2={20}
-              altText2={"Hero image"}
-            />
-            <Cards
-              title="Migration to linear 101"
-              imageSrc={"/card.jpg"}
-              width1={300}
-              height1={200}
-              altText1={"Hero image"}
-              linkTo={"/Projects/id"}
-              desc={
-                "Linear helps streamline software projects, sprints, tasks and bug tracking. Here is how to get started"
-              }
-              linkSrc={"/arrow-up-right.svg"}
-              width2={20}
-              height2={20}
-              altText2={"Hero image"}
-            />
-            <Cards
-              title="Migration to linear 101"
-              imageSrc={"/card.jpg"}
-              width1={300}
-              height1={200}
-              altText1={"Hero image"}
-              linkTo={"/Projects/id"}
-              desc={
-                "Linear helps streamline software projects, sprints, tasks and bug tracking. Here is how to get started"
-              }
-              linkSrc={"/arrow-up-right.svg"}
-              width2={20}
-              height2={20}
-              altText2={"Hero image"}
-            />
-            <Cards
-              title="Migration to linear 101"
-              imageSrc={"/card.jpg"}
-              width1={300}
-              height1={200}
-              altText1={"Hero image"}
-              linkTo={"/Projects/id"}
-              desc={
-                "Linear helps streamline software projects, sprints, tasks and bug tracking. Here is how to get started"
-              }
-              linkSrc={"/arrow-up-right.svg"}
-              width2={20}
-              height2={20}
-              altText2={"Hero image"}
-            />
-          </div> */}
+          <p className="font-bold text-lg md:text-2xl mt-10">Trending Posts</p>
+          <div className="my-8 md:flex md:justify-between">
+            {/* text */}
+            <div>
+              <p className="font-bold text-xl pb-2">The Art of the Doodle</p>
+              <p className="text-[#3D4D5C] pb-4">A deep dive into the art of doodling</p>
+              <button type="button" className="px-4 py-2 rounded-md bg-[#F0F2F5]">Read More</button>
+            </div>
+            {/* image */}
+            <div className="w-[304px] h-[171px] relative rounded-lg">
+             <Image
+             src={"/image.png"}
+             layout="fill"
+             alt="image"
+             />
+            </div>
+          </div>
+
+          <div className="my-8 md:flex md:justify-between">
+            {/* text */}
+            <div>
+              <p className="font-bold text-xl pb-2">The Art of the Doodle</p>
+              <p className="text-[#3D4D5C] pb-4">A deep dive into the art of doodling</p>
+              <button type="button" className="px-4 py-2 rounded-md bg-[#F0F2F5]">Read More</button>
+            </div>
+            {/* image */}
+            <div className="w-[304px] h-[171px] relative rounded-lg">
+             <Image
+             src={"/image.png"}
+             layout="fill"
+             alt="image"
+             />
+            </div>
+          </div>
         </div>
         
       </main>
