@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from 'next/image'
+import Image from "next/image"
 
 const page = () => {
   return (
@@ -71,12 +71,15 @@ const page = () => {
               <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                 <div className="text-center">
                   <Image
-                  src={'/photo-icon.svg'}
-                  width={100}
-                  height={100}
-                  alt='photo icon'
-                  className='ml-10'
-                  />
+                    src={'/photo-icon.svg'}
+                    width={100}
+                    height={100}
+                    alt='photo icon'
+                    className='ml-10'
+                    style={{
+                      maxWidth: "100%",
+                      height: "auto"
+                    }} />
                   <div className="mt-4 flex text-sm leading-6 text-gray-600">
                     <label
                       htmlFor="file-upload"
@@ -151,12 +154,15 @@ const page = () => {
                 <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                   <div className="text-center">
                     <Image
-                    src={'/photo-icon.svg'}
-                    width={100}
-                    height={100}
-                    alt='photo icon'
-                    className='ml-10'
-                    />
+                      src={'/photo-icon.svg'}
+                      width={100}
+                      height={100}
+                      alt='photo icon'
+                      className='ml-10'
+                      style={{
+                        maxWidth: "100%",
+                        height: "auto"
+                      }} />
                     <div className="mt-4 flex text-sm leading-6 text-gray-600">
                       <label
                         htmlFor="file-upload"
@@ -205,8 +211,7 @@ const page = () => {
         </div>
       </form>
     </div>
-    
-  )
+  );
 }
 
 export default page
