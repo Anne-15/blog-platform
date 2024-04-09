@@ -1,5 +1,5 @@
 import React from "react";
-import { DesignGrid } from "../DesignGrid";
+import { DesignGrid } from "./DesignGrid";
 import Link from "next/link";
 
 const DesignCards = () => {

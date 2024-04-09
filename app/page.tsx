@@ -1,9 +1,6 @@
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
-import ProjectsGrid from "./components/ProjectsGrid";
+import ProjectsGrid from "./components/projects/ProjectsGrid";
 import Hero from "./components/Hero";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { FaAnglesRight } from "react-icons/fa6";
 import Link from "next/link";
 
 export default function Home() {

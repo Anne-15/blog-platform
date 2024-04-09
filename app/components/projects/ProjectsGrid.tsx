@@ -10,7 +10,7 @@ import {
   IconSignature,
   IconTableColumn,
 } from "@tabler/icons-react";
-import { BentoGrid, BentoGridItem } from "./ui/bento-grid";
+import { BentoGrid, BentoGridItem } from "../ui/bento-grid";
 import Image from "next/image";
 
 const ProjectsGrid = () => {
