@@ -6,7 +6,6 @@ import React from 'react'
 
 const page = () => {
   return <>
-  <Navbar/>
   {/* before hero image */}
   <div className='flex justify-around m-20'>
     {/* share the article */}
@@ -64,7 +63,6 @@ const page = () => {
         </div>
       </div>
     </section>
-    <Footer/>
   </>;
 }
 
