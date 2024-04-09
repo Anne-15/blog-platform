@@ -1,72 +1,65 @@
-"use client"
-import Link from 'next/link'
-import React, { useState } from 'react'
-import Image from "next/image"
+"use client";
+import Link from "next/link";
+import React, { useState } from "react";
+import Image from "next/image";
+import { cn } from "@/utils/cn";
+import { HoveredLink, Menu, MenuItem, ProductItem } from "./ui/navbar-menu";
 
-const Navbar = () => {
-    // const [login, setLoggin] = useState(true);
-    const [isOpen, setIsOpen] = useState(false);
-
-    const toggleDropdown = () => {
-        setIsOpen(!isOpen);
-    }
+const Navbar = ({ className }: { className?: string }) => {
+  const [active, setActive] = useState<string | null>(null);
 
   return (
-      <nav className='flex justify-between p-8'>
-          <div className='flex gap-3 text-2xl '>
-              <button className='rounded-full bg-black w-8 h-8 text-gray-50 font-bold'>R</button>
-              <h1 className='font-bold'>
-                  <Link href={'/'}>Riishi</Link>
-              </h1>
+    <div
+      className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}
+    >
+      <Menu setActive={setActive}>
+        <MenuItem setActive={setActive} active={active} item="Software">
+          <div className="flex flex-col space-y-4 text-sm">
+            <HoveredLink href="/web-dev">Web Development</HoveredLink>
+            <HoveredLink href="/interface-design">Interface Design</HoveredLink>
+            <HoveredLink href="/seo">Search Engine Optimization</HoveredLink>
+            <HoveredLink href="/branding">Branding</HoveredLink>
           </div>
-          
-          <div className='md:flex'>
-              <ul className='flex flex-row gap-10 font-semibold'>
-                  <li><Link href={'/'}>Home</Link></li>
-                  <li><Link href={'/Projects'}>Projects</Link></li>
-                  <li><Link href={'/Blogs'}>Blogs</Link></li>
-                  <li><Link href={'/About'}>About us</Link></li>
-              </ul>
+        </MenuItem>
+        <MenuItem setActive={setActive} active={active} item="Product Design">
+          <div className="  text-sm grid grid-cols-2 gap-10 p-4">
+            <ProductItem
+              title="Algochurn"
+              href="https://algochurn.com"
+              src="https://assets.aceternity.com/demos/algochurn.webp"
+              description="Prepare for tech interviews like never before."
+            />
+            <ProductItem
+              title="Tailwind Master Kit"
+              href="https://tailwindmasterkit.com"
+              src="https://assets.aceternity.com/demos/tailwindmasterkit.webp"
+              description="Production ready Tailwind css components for your next project"
+            />
+            <ProductItem
+              title="Moonbeam"
+              href="https://gomoonbeam.com"
+              src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.51.31%E2%80%AFPM.png"
+              description="Never write from scratch again. Go from idea to blog in minutes."
+            />
+            <ProductItem
+              title="Rogue"
+              href="https://userogue.com"
+              src="https://assets.aceternity.com/demos/Screenshot+2024-02-21+at+11.47.07%E2%80%AFPM.png"
+              description="Respond to government RFPs, RFIs and RFQs 10x faster using AI"
+            />
           </div>
-          <div className='flex gap-10 font-semibold'>
-              {/* <button>
-                  <Link href={'/Login'}> Login </Link> 
-              </button>
-              <button className='rounded-lg w-20 h-10 bg-black text-gray-50'>
-                  <Link href={'/Signup'}>Sign up</Link>
-              </button> */}
-              <div>
-                  {/* <button className='rounded-lg w-28 h-10 bg-black text-gray-50' onClick={toggleDropdown}>My Profile</button> */}
-                  <Image
-                      src={'/profile.svg'}
-                      width={40}
-                      height={40}
-                      alt='profile image'
-                      onClick={toggleDropdown}
-                      style={{
-                          cursor: 'pointer',
-                          maxWidth: "100%",
-                          height: "auto"
-                      }} />
-                  {isOpen && (
-                      <div className="mt-2 absolute origin-top-right right-0 w-44 rounded-lg shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-4 z-50">
-                          <ul role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                              <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                  <Link href={'/AddProject'}>Add new project</Link>
-                              </li>
-                              <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                  <Link href={'/AddBlog'}>Add new blog</Link>
-                              </li>
-                              <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                  <Link href={'/Signup'}>Update Profile</Link>
-                              </li>
-                          </ul>
-                      </div>
-                  )}
-              </div>
+        </MenuItem>
+        <MenuItem setActive={setActive} active={active} item="Profile">
+          <div className="flex flex-col space-y-4 text-sm">
+            <HoveredLink href="/hobby">Hobby</HoveredLink>
+            <HoveredLink href="/individual">Individual</HoveredLink>
+            <HoveredLink href="/team">Team</HoveredLink>
+            <HoveredLink href="/enterprise">Enterprise</HoveredLink>
           </div>
-      </nav>
+        </MenuItem>
+      </Menu>
+    </div>
   );
-}
+};
 
-export default Navbar
+export default Navbar;
