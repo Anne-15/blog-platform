@@ -1,42 +1,43 @@
-import React from 'react'
-import Navbar from '../components/Navbar'
-import CardBlogs from '../components/CardBlogs'
-import Image from "next/image"
-import Footer from '../components/Footer'
-import CardProjects from '../components/CardProjects'
+import React from "react";
+import Navbar from "../components/Navbar";
+import CardBlogs from "../components/CardBlogs";
+import Image from "next/image";
+import Footer from "../components/Footer";
+import CardProjects from "../components/CardProjects";
+import HeroSection from "../components/projects/HeroSection";
+import { DirectionAwareHover } from "../components/ui/layout-grid";
 
 const page = () => {
+  const imageUrl =
+    "https://images.unsplash.com/photo-1663765970236-f2acfde22237?q=80&w=3542&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+
   return (
     <>
-    <Navbar/>
-    <div className='border-2 border-gray-700 ml-16 mr-16 mt-5'></div>
-    <div className='container mx-auto'>
-        <p className='rounded-full ring-2 ring-black p-1 w-fit mt-14 mb-5'>Design Journal</p>
-        <h1 className='font-bold text-6xl mb-6'>Inside Design: Workflows and Processes</h1>
-        <p>Subscribe for the latest design trends, design software and releases, and exclusive interviews with design leaders</p>
-    </div>
-    <div className='border-2 border-gray-700 ml-16 mr-16 mt-14 mb-14'></div>
-    <div className='container mx-auto flex flex-row mb-14'>
-        <article className='tracking-wide leading-loose flex w-1/4 flex-col h-screen'>
-            <ul className='flex flex-col gap-2 p-4 text-md'>
-                <li className='p-2 rounded-lg hover:bg-gray-200 cursor-pointer'>
-                    All Projects
-                </li>
-                <li className='p-2 rounded-lg hover:bg-gray-200 cursor-pointer'>Prouct Design</li>
-                <li className='p-2 rounded-lg hover:bg-gray-200 cursor-pointer'>Software Development</li>
-            </ul>
-        </article>
-        <section className='grid grid-cols-3 gap-12 mr-8'>
-            <CardProjects category={'product design'}/>
-            <CardProjects category={'product design'}/>
-            <CardProjects category={'software development'}/>
-            <CardProjects category={'software development'}/>
-            <CardProjects category={'software development'}/>
-        </section>
-    </div>
-    <Footer/>
-    </>
-  )
-}
+      <HeroSection />
 
-export default page
+      <div className="md:flex md:flex-row flex-col justify-center gap-6 mx-4 md:m-10">
+        
+        <div className="flex flex-col items-center md:items-start gap-6 md:gap-0">
+          <DirectionAwareHover imageUrl={imageUrl}>
+            <p className="font-bold text-xl">In the mountains</p>
+            <p className="font-normal text-sm">$1299 / night</p>
+          </DirectionAwareHover>
+        </div>
+        <div className="flex flex-col items-center md:items-start gap-6 md:gap-0">
+          <DirectionAwareHover imageUrl={imageUrl}>
+            <p className="font-bold text-xl">In the mountains</p>
+            <p className="font-normal text-sm">$1299 / night</p>
+          </DirectionAwareHover>
+        </div>
+        <div className="flex flex-col items-center md:items-start gap-6 md:gap-0">
+          <DirectionAwareHover imageUrl={imageUrl}>
+            <p className="font-bold text-xl">In the mountains</p>
+            <p className="font-normal text-sm">$1299 / night</p>
+          </DirectionAwareHover>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default page;

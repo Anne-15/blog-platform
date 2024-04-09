@@ -7,7 +7,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 export default function Home() {
   return (
     <>
-      <Navbar className="top-2" />
       <Hero />
       <div className="mx-auto">
         <Tabs
@@ -29,8 +28,6 @@ export default function Home() {
           </TabsContent>
         </Tabs>
       </div>
-
-      <Footer />
     </>
   );
 }
