@@ -6,7 +6,6 @@ import Navbar from '@/app/components/Navbar'
 
 const page = ({params} : {params: number}) => {
   return <>
-  <Navbar/>
   {/* before hero image */}
   <div className='flex justify-around m-20'>
     {/* share the article */}
@@ -81,9 +80,7 @@ const page = ({params} : {params: number}) => {
         </Link>
       </div>
     </div>
-  </section>
-  <Footer/>
-  
+  </section>  
   </>;
 }
 
