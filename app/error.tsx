@@ -6,8 +6,7 @@ interface errorProps {
   reset: () => void;
 }
 
-
-const error: FC<errorProps> = ({ reset }) => {
+const Error: FC<errorProps> = ({ reset }) => {
   return (
     <main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
         <div className="text-center">
@@ -23,4 +22,4 @@ const error: FC<errorProps> = ({ reset }) => {
   )
 }
 
-export default error
+export default Error
