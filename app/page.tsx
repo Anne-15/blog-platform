@@ -6,6 +6,7 @@ import MagicButton from "./components/MagicButton";
 import { CardBody, CardContainer, CardItem } from "./components/Card";
 import Image from "next/image";
 import { projects } from "@/data/projects"; // Ensure this import is correct
+import TracingCard from "./components/TracingCard";
 
 export default function Home() {
   return (
@@ -33,7 +34,7 @@ export default function Home() {
                 </Link>
               </div>
             </div>
-            <div className="md:grid md:grid-cols-3 gap-4 px-10">
+            {/* <div className="md:grid md:grid-cols-2 gap-4 px-10">
               {projects.length === 0 ? (
                 <div>No Projects Found</div>
               ) : (
@@ -97,7 +98,8 @@ export default function Home() {
                   </div>
                 ))
               )}
-            </div>
+            </div> */}
+            <TracingCard/>
           </TabsContent>
           <TabsContent value="design">
             <div className="py-2 text-center space-y-2">
