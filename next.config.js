@@ -3,6 +3,6 @@ const nextConfig = {}
 
 module.exports = {
     images:{
-        domains:['assets.aceternity.com', 'images.unsplash.com'],
+        domains:['assets.aceternity.com', 'images.unsplash.com','pbs.twimg.com'],
     }
 }
