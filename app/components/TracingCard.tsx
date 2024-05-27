@@ -2,6 +2,9 @@
 import React from "react";
 import { TracingBeam } from "./ui/tracing-beam";
 import Image from "next/image";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+import MagicButton from "./MagicButton";
 
 const TracingCard = () => {
   return (
@@ -37,6 +40,11 @@ const TracingCard = () => {
                 />
               )}
               {item.description}
+              <div className="flex justify-end">
+                <Link href="/" className="gap-2">
+                  <MagicButton title={"Learn More"} />
+                </Link>
+              </div>
             </div>
           </div>
         ))}
