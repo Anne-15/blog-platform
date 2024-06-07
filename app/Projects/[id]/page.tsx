@@ -12,7 +12,7 @@ import ProjectsPage from "@/app/components/projects/ProjectPage";
 const page = ({ params }: { params: { id: string } }) => {
   const { id } = params;
   const projectIndex = parseInt(id) - 1;
-  const project = items[projectIndex];
+  const project:any = items[projectIndex];
 
   if (!project) {
     notFound();
