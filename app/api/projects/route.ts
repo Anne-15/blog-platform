@@ -4,10 +4,10 @@ import { eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (req: NextRequest) => {
-  const { name, title, desc, headerimage, body } = await req.json();
+  const { name, title, desc, headerimage, backgroundInfo, objectives, functionaliy, designs, conclusion } = await req.json();
 
   // Validate request body
-  if (!name || !title || !desc || !headerimage || !body) {
+  if (!name || !title || !desc || !headerimage || !backgroundInfo || !objectives || !functionaliy || !designs || !conclusion) {
     return NextResponse.json(
       { message: "Missing required fields" },
       { status: 400 }
@@ -21,8 +21,12 @@ export const POST = async (req: NextRequest) => {
         name,
         title,
         desc,
-        headerimage,
-        body,
+        image: headerimage,
+        backgroundInfo,
+        objectives,
+        functionaliy,
+        designs,
+        conclusion,
       })
       .returning()
       .execute();

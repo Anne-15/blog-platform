@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import ProjectsGrid from "../ui/projects-grid";
 import { BentoGrid, BentoGridItem } from "../ui/bento-grid";
@@ -10,8 +10,17 @@ import {
   IconTableColumn,
 } from "@tabler/icons-react";
 import { motion } from "framer-motion";
+import { getProjects } from "./Requests";
 
 const ProjectContent = () => {
+  useEffect(() => {
+    getProjects().then((result) => {
+      console.log(result);
+    }).catch((error) => {
+      console.error("Error happening...", error);
+    })
+  },[])
+  
   return (
     <div className="mx-auto">
       <div className="pt-8 text-center space-y-2">

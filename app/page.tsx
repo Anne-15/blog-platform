@@ -1,4 +1,3 @@
-import ProjectsGrid from "./components/projects/ProjectsGrid";
 import Hero from "./components/Hero";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
@@ -44,7 +43,7 @@ export default function Home() {
                 <button className="text-sm font-bold">view all projects</button>
               </Link>
             </div>
-            <ProjectsGrid />
+            {/* <ProjectsGrid /> */}
           </TabsContent>
         </Tabs>
       </div>
