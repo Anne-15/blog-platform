@@ -28,7 +28,7 @@ const AboutPage = () => {
       </div>
 
       <div className="">
-        <div className="max-w-3xl mx-auto text-gray-700 dark:text-gray-200">
+        <div className="max-w-3xl mx-auto text-gray-900 dark:text-gray-200">
           <h1 className="font-bold text-xl md:text-3xl">Personal Bio</h1>
           <p className="py-4 text-small leading-relaxed">
             I bring the fun and the function! I'm a strategi'c (love that typo!)

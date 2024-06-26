@@ -18,9 +18,10 @@ export const ProjectsTable = pgTable(
     image: text("image").notNull(),
     backgroundInfo: text("backgroundInfo").notNull(),
     objectives: text("objectives").notNull(),
-    functionaliy: text("functionaliy").notNull(),
-    designs: text("designs").notNull(),
-    conclusion: text("conclusion").notNull(),
+    functionaliy: text("functionaliy"),
+    designs: text("designs"),
+    conclusion: text("conclusion"),
+    badge: text("badge"),
     createdAt: timestamp("createdAt").defaultNow().notNull(),
   },
   (project) => {

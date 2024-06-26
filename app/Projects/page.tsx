@@ -1,12 +1,14 @@
 import React from "react";
 import HeroSection from "../components/projects/HeroSection";
 import ProjectContent from "../components/projects/ProjectContent";
+import { allsoftwarePJS } from "./Requests";
 
-const page = () => {
+const page = async() => {
+  const softwaredata = await allsoftwarePJS();
   return (
     <>
       <HeroSection />
-      <ProjectContent />
+      <ProjectContent projects={softwaredata} />
     </>
   );
 };
