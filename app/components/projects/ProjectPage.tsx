@@ -19,7 +19,7 @@ interface Project {
   data: React.JSX.Element;
 }
 
-const ProjectPage = ({ project }: { project: Project }) => {
+const ProjectPage = () => {
   return (
     <>
       <Navbar />
@@ -33,11 +33,11 @@ const ProjectPage = ({ project }: { project: Project }) => {
                 </div>
               </Link>
               <h1 className="text-base md:text-xl lg:text-4xl font-semibold bg-clip-text py-4">
-                {project.title}
+                Welcome to my platform
               </h1>
               <div className="w-full mt-4 aspect-w-16 aspect-h-10 bg-gray-100 rounded-lg overflow-hidden xl:aspect-w-16 xl:aspect-h-10 relative">
                 <Image
-                  src={project.image || "/default-image.jpg"}
+                  src={"/landscape.jpg"}
                   alt="project image"
                   layout="fill"
                   objectFit="cover"
@@ -47,12 +47,28 @@ const ProjectPage = ({ project }: { project: Project }) => {
               </div>
             </header>
             <div className="mt-8 space-y-3">
-              {project.data}
+              <p>
+                Hey there, and welcome to my portfolio blog! This space is more
+                than just a collection of projects - it's an invitation to peek
+                behind the curtain and see how my creative process unfolds.
+                Here, you'll find not only the polished end products, but also
+                the exciting (and sometimes messy) journey of how I get there,
+                from the initial spark of an idea to the final result.
+              </p>
+              <p>
+                But before we delve into the projects, let me tell you a bit
+                about myself. I'm Anne, a software engineer, product designer
+                and upcoming product manager. My passion for computers and
+                technology has been with me since early childhood where my
+                curiosity about computers took over. Whether it's design,
+                development, leadership, I'm always eager to learn, experiment,
+                and push the boundaries of what's possible.
+              </p>
+              <p>So take your time here and learn about my projects.</p>
             </div>
           </article>
         </main>
       </div>
-      <Footer />
     </>
   );
 };

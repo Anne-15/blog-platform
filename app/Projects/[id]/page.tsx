@@ -18,7 +18,7 @@ const page = ({ params }: { params: { id: string } }) => {
     notFound();
     return null;
   }
-  return <ProjectPage project={project}/> ;
+  return <ProjectPage/> ;
 };
 
 export default page;

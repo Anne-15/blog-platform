@@ -1,12 +1,13 @@
 "use client";
-import React, { useState } from "react";
-import DesignCards from "../components/designs/DesignCards";
+import React from "react";
+import DesignProjects from "../components/designs/DesignProjects";
 
 const Blogs = () => {
   return (
-    <>
-      <DesignCards />
-    </>
+      <div>
+        <DesignProjects/>
+      </div>
+
   );
 };
 
