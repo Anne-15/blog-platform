@@ -32,7 +32,7 @@ const TracingCard = ({content}:{content:any}) => {
               )} */}
             </div>
             <div className="text-sm  prose prose-sm dark:prose-invert">
-              {/* {item?.image && (
+              {item?.image && (
                 <Image
                   src={item.image}
                   alt="blog thumbnail"
@@ -40,7 +40,7 @@ const TracingCard = ({content}:{content:any}) => {
                   width="1000"
                   className="rounded-lg mb-10 object-cover"
                 />
-              )} */}
+              )}
               {item.desc}
               <div className="flex justify-end">
                 <Link href="/" className="gap-2">

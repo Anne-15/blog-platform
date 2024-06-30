@@ -4,10 +4,30 @@ import { eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
 
 export const POST = async (req: NextRequest) => {
-  const { name, title, desc, headerimage, backgroundInfo, objectives, functionaliy, designs, conclusion } = await req.json();
+  const {
+    name,
+    title,
+    desc,
+    headerimage,
+    backgroundInfo,
+    objectives,
+    functionaliy,
+    designs,
+    conclusion,
+  } = await req.json();
 
   // Validate request body
-  if (!name || !title || !desc || !headerimage || !backgroundInfo || !objectives || !functionaliy || !designs || !conclusion) {
+  if (
+    !name ||
+    !title ||
+    !desc ||
+    !headerimage ||
+    !backgroundInfo ||
+    !objectives ||
+    !functionaliy ||
+    !designs ||
+    !conclusion
+  ) {
     return NextResponse.json(
       { message: "Missing required fields" },
       { status: 400 }
@@ -73,6 +93,26 @@ export const GET = async (req: NextRequest) => {
     }
   } catch (error) {
     console.error("Error fetching projects:", error);
+    return NextResponse.json(
+      { message: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
+};
+
+export const DELETE = async (req: NextRequest) => {
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get("id");
+
+  try {
+    await db
+      .delete(ProjectsTable)
+      .where(eq(ProjectsTable.id, Number(id)))
+      .returning();
+
+    return NextResponse.json({ message: "Project deleted successfully" });
+  } catch (error) {
+    console.error("Error deleting project:", error);
     return NextResponse.json(
       { message: "Internal Server Error" },
       { status: 500 }
