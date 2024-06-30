@@ -1,25 +1,11 @@
-"use client";
-
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 import Navbar from "@/app/components/Navbar";
-import Footer from "@/app/components/Footer";
 
-interface Project {
-  id: number;
-  title: string;
-  description: React.JSX.Element;
-  header: React.JSX.Element;
-  className: string;
-  icon: React.JSX.Element;
-  link: string;
-  image: string;
-  data: React.JSX.Element;
-}
-
-const ProjectPage = () => {
+const ProjectPage = ({ project }: { project: any }) => {
+  const item = project.project;
   return (
     <>
       <Navbar />
@@ -33,11 +19,11 @@ const ProjectPage = () => {
                 </div>
               </Link>
               <h1 className="text-base md:text-xl lg:text-4xl font-semibold bg-clip-text py-4">
-                Welcome to my platform
+                {item.name}
               </h1>
               <div className="w-full mt-4 aspect-w-16 aspect-h-10 bg-gray-100 rounded-lg overflow-hidden xl:aspect-w-16 xl:aspect-h-10 relative">
                 <Image
-                  src={"/landscape.jpg"}
+                  src={item.image || "/landscape.jpg"}
                   alt="project image"
                   layout="fill"
                   objectFit="cover"
@@ -47,24 +33,11 @@ const ProjectPage = () => {
               </div>
             </header>
             <div className="mt-8 space-y-3">
-              <p>
-                Hey there, and welcome to my portfolio blog! This space is more
-                than just a collection of projects - it's an invitation to peek
-                behind the curtain and see how my creative process unfolds.
-                Here, you'll find not only the polished end products, but also
-                the exciting (and sometimes messy) journey of how I get there,
-                from the initial spark of an idea to the final result.
-              </p>
-              <p>
-                But before we delve into the projects, let me tell you a bit
-                about myself. I'm Anne, a software engineer, product designer
-                and upcoming product manager. My passion for computers and
-                technology has been with me since early childhood where my
-                curiosity about computers took over. Whether it's design,
-                development, leadership, I'm always eager to learn, experiment,
-                and push the boundaries of what's possible.
-              </p>
-              <p>So take your time here and learn about my projects.</p>
+              <p>{item.desc}</p>
+              <p>{item.backgroundInfo}</p>
+              <p>{item.objectives}</p>
+              <p>{item.functionaliy}</p>
+              <p>{item.conclusion}</p>
             </div>
           </article>
         </main>
