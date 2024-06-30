@@ -12,7 +12,7 @@ const TracingCard = ({content}:{content:any}) => {
   return (
     <TracingBeam className="px-6">
       <div className="max-w-2xl mx-auto antialiased pt-4 relative">
-        {dummyContent.map((item: { title: string; image: string; desc: string; }, index:number) => (
+        {dummyContent?.map((item: { title: string; image: string; desc: string; }, index:number) => (
           <div key={`content-${index}`} className="mb-6">
             <p className="text-lg pb-1 font-bold">{item.title}</p>
             <div className="my-2 pb-2 flex flex-wrap gap-2">

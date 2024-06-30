@@ -1,3 +1,4 @@
+"use client"
 import Hero from "./components/Hero";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
@@ -7,9 +8,25 @@ import Image from "next/image";
 import TracingCard from "./components/TracingCard";
 import { allsoftwarePJS } from "./Projects/Requests";
 import DesignsPage from "./components/designs/DesignsPage";
+import { useEffect, useState } from "react";
 
-export default async function Home() {
-  const softwaredata = await allsoftwarePJS();
+const Home = () => {
+
+  const [softwaredata, setSoftwareData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await allsoftwarePJS();
+        setSoftwareData(data);
+      } catch (error) {
+        console.error("Error fetching software projects:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  
   return (
     <>
       <Hero />
@@ -57,4 +74,6 @@ export default async function Home() {
       </div>
     </>
   );
-}
+};
+
+export default Home;

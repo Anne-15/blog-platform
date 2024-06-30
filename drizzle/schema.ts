@@ -21,7 +21,6 @@ export const ProjectsTable = pgTable(
     functionaliy: text("functionaliy"),
     designs: text("designs"),
     conclusion: text("conclusion"),
-    badge: text("badge"),
     createdAt: timestamp("createdAt").defaultNow().notNull(),
   },
   (project) => {
