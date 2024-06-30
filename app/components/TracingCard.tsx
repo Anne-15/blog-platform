@@ -41,7 +41,10 @@ const TracingCard = ({content}:{content:any}) => {
                   className="rounded-lg mb-10 object-cover"
                 />
               )}
+              <div className="tracking-wider pb-3">
               {item.desc}
+              </div>
+              
               <div className="flex justify-end">
                 <Link href="/" className="gap-2">
                   <MagicButton title={"Learn More"} />
