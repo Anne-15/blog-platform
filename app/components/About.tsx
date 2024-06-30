@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { cn } from "@/utils/cn";
 import { Meteors } from "./ui/meteors";
+import Link from "next/link";
 
 const AboutPage = () => {
   return (
@@ -47,11 +48,20 @@ const AboutPage = () => {
             experiences.
           </p>
           <p>Here's a timeline of what I've been up to:</p>
-          <div className="p-10">
-            
+          <div className="p-10"></div>
+          <div className="flex flex-row justify-around">
+            <Link href={"/AddProject"}>
+              {" "}
+              <button>Add Software Project</button>{" "}
+            </Link>
+            <Link href={"/AddDesign"}>
+              {" "}
+              <button>Add Design Project</button>{" "}
+            </Link>
           </div>
         </div>
       </div>
+
       <Meteors number={20} />
     </div>
   );

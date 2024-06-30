@@ -8,9 +8,10 @@ import TracingCard from "./components/TracingCard";
 import { allsoftwarePJS } from "./Projects/Requests";
 import DesignsPage from "./components/designs/DesignsPage";
 
-const Home = async() => {
+
+const Home = async () => {
   const softwaredata = await allsoftwarePJS();
-  
+
   return (
     <>
       <Hero />
