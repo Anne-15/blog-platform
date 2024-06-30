@@ -4,6 +4,8 @@ import { default as NextImage } from "next/image";
 import { useMutation } from "@tanstack/react-query";
 import { addProject } from "@/app/Projects/Requests";
 import { useFormik } from "formik";
+import { ToastAction } from "@/components/ui/toast";
+import { toast } from "@/components/ui/use-toast";
 
 const AddProject = () => {
   const [imagePreview, setImagePreview] = useState<string | undefined>(
@@ -11,7 +13,7 @@ const AddProject = () => {
   );
   const [designImage, setDesignImage] = useState<string | undefined>(undefined);
 
-//   console.log(imagePreview, designImage);
+  //   console.log(imagePreview, designImage);
 
   useEffect(() => {
     const coverImage = localStorage.getItem("cover");
@@ -140,6 +142,20 @@ const AddProject = () => {
       const data = await addProject(values);
       return data;
     },
+    onSuccess(data) {
+      formik.resetForm();
+      toast({
+        description: data.message,
+      })
+    },
+    onError() {
+      toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request.",
+        action: <ToastAction altText="Try again">Try again</ToastAction>,
+      });
+    },
   });
 
   const formik = useFormik({
@@ -162,12 +178,12 @@ const AddProject = () => {
   });
 
   useEffect(() => {
-    formik.setFieldValue('headerimage', imagePreview);
-  },[imagePreview])
+    formik.setFieldValue("headerimage", imagePreview);
+  }, [imagePreview]);
 
   useEffect(() => {
-    formik.setFieldValue('designs', designImage);
-  },[designImage])
+    formik.setFieldValue("designs", designImage);
+  }, [designImage]);
 
   return (
     <div className="mt-20">
