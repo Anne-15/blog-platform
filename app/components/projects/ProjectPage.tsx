@@ -6,6 +6,7 @@ import Navbar from "@/app/components/Navbar";
 
 const ProjectPage = ({ project }: { project: any }) => {
   const item = project.project;
+  
   return (
     <>
       <Navbar />
@@ -13,11 +14,16 @@ const ProjectPage = ({ project }: { project: any }) => {
         <main className="max-w-4xl w-full mx-auto pb-10 pt-20 px-4 md:px-10">
           <article>
             <header className="flex flex-col">
-              <Link href="/Projects">
-                <div className="rounded-full hover:shadow-md w-10 h-10 flex items-center justify-center border cursor-pointer">
-                  <FaArrowLeft />
-                </div>
-              </Link>
+              <div className="flex justify-between items-center">
+                <Link href="/Projects">
+                  <div className="rounded-full hover:shadow-md w-10 h-10 flex items-center justify-center border cursor-pointer">
+                    <FaArrowLeft />
+                  </div>
+                </Link>
+                {/* <button className="font-bold text-purple-800 dark:hover:text-purple-400 dark:text-purple-200">
+                  update project
+                </button> */}
+              </div>
               <h1 className="text-base md:text-xl lg:text-4xl font-semibold bg-clip-text py-4">
                 {item.name}
               </h1>
@@ -36,9 +42,22 @@ const ProjectPage = ({ project }: { project: any }) => {
               <p>{item.desc}</p>
               <p>{item.backgroundInfo}</p>
               <p>{item.objectives}</p>
+              <div className="flex items-center justify-center">
+                <Image
+                  src={item.designs || "/landscape.jpg"}
+                  alt="project image"
+                  layout=""
+                  width={650}
+                  height={500}
+                  objectFit=""
+                  objectPosition=""
+                  className="rounded-lg"
+                />
+              </div>
               <p>{item.functionaliy}</p>
               <p>{item.conclusion}</p>
             </div>
+            <div className="flex justify-end"></div>
           </article>
         </main>
       </div>

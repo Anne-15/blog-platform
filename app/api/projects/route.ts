@@ -119,3 +119,74 @@ export const DELETE = async (req: NextRequest) => {
     );
   }
 };
+
+export const PUT = async (req: NextRequest) => {
+  const {
+    name,
+    title,
+    desc,
+    headerimage,
+    backgroundInfo,
+    objectives,
+    functionaliy,
+    designs,
+    conclusion,
+  } = await req.json();
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get("id");
+
+  // Validate request body
+  if (
+    !name ||
+    !title ||
+    !desc ||
+    !headerimage ||
+    !backgroundInfo ||
+    !objectives ||
+    !functionaliy ||
+    !designs ||
+    !conclusion
+  ) {
+    return NextResponse.json(
+      { message: "Missing required fields" },
+      { status: 400 }
+    );
+  }
+
+  try {
+    const project = await db
+      .update(ProjectsTable)
+      .set({
+        name,
+        title,
+        desc,
+        image: headerimage,
+        backgroundInfo,
+        objectives,
+        functionaliy,
+        designs,
+        conclusion,
+      })
+      .where(eq(ProjectsTable.id, Number(id)))
+      .returning()
+      .execute();
+
+    if (project.length === 0) {
+      return NextResponse.json(
+        { message: "Project not found" },
+        { status: 404 }
+      );
+    }
+
+    return NextResponse.json(
+      { message: "Project updated", projectId: project[0].id },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Error updating project:", error);
+    return NextResponse.json(
+      { message: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
+};
