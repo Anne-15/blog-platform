@@ -71,23 +71,24 @@ const page = () => {
       </div>
       {/* table of contents */}
       <div className="bg-purple-800 dark:bg-purple-200 w-full h-[200px] text-slate-50 dark:text-slate-900 py-6">
-        <div className="md:grid md:grid-cols-4 gap-6 container justify-items-center content-center mx-auto">
+        <div className="md:grid md:grid-cols-1 gap-6 container justify-items-center content-center mx-auto">
           <div>
-            <div className="">DISCOVER</div>
-            <div className="text-sm tracking-wider space-y-2 pt-3 leading-relaxed">
+            <div className="font-bold text-center">DISCOVER</div>
+            <div className="text-sm tracking-wider space-y-5 pt-3 leading-relaxed text-center">
               <div>Going Back to my teaching routes</div>
               <div>How is the problem currently being addressed?</div>
-              <div>Focusing on the WHY and not the WHAT</div>
+              <div>The End?</div>
+              
             </div>
           </div>
-          <div>
+          {/* <div>
             <div className="">DEFINE</div>
             <div className="text-sm tracking-wider space-y-2 pt-3 leading-relaxed">
               <div>What do teachers want and why?</div>
               <div>Align the solution to the research</div>
             </div>
-          </div>
-          <div>
+          </div> */}
+          {/* <div>
             <div className="">DEVELOP</div>
             <div className="text-sm tracking-wider space-y-2 pt-3 leading-relaxed">
               <div>Uncovering user's mental models</div>
@@ -95,14 +96,14 @@ const page = () => {
               <div>How would the product work?</div>
               <div>Iterating based on usability testing</div>
             </div>
-          </div>
-          <div>
-            <div className="">DELIVER</div>
+          </div> */}
+          {/* <div>
+            <div className="">USEFUL LINKS</div>
             <div className="text-sm tracking-wider space-y-2 pt-3 leading-relaxed">
-              <div>Support teachers support students</div>
+              <div>Prototypes: </div>
               <div>Where do we go from here?</div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
@@ -171,7 +172,7 @@ const page = () => {
           </div>
           <div className="py-8">
             <div className="font-bold py-6">
-              How are our competitors supporting or hindering students learning?
+              Conclusion
             </div>
             I compared the features, strengths, and weaknesses of 4 online math
             resources: Khan Academy, Desmos, IXL, and i-Ready. This helped

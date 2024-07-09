@@ -8,6 +8,20 @@ import {
   uniqueIndex,
 } from "drizzle-orm/pg-core";
 
+export const UserTable = pgTable(
+  "user",
+  {
+    id: serial("id").primaryKey(),
+    email: text("email").notNull(),
+    password: text("password").notNull(),
+  },
+  (user) => {
+    return {
+      uniqueIdx: uniqueIndex("users_idx").on(user.email),
+    };
+  }
+);
+
 export const ProjectsTable = pgTable(
   "projects",
   {
@@ -20,6 +34,8 @@ export const ProjectsTable = pgTable(
     objectives: text("objectives").notNull(),
     functionaliy: text("functionaliy"),
     designs: text("designs"),
+    github: text('github').notNull(),
+    siteurl: text('url'),
     conclusion: text("conclusion"),
     createdAt: timestamp("createdAt").defaultNow().notNull(),
   },
@@ -37,10 +53,19 @@ export const BlogsTable = pgTable(
     name: text("name").notNull(),
     title: text("title").notNull(),
     category: text("category").notNull(),
-    description: text("desc").notNull(),
+    projectType: text('projectType'),
+    role: text('role'),
+    indutry: text('industry'),
+    problemStatement: text('problemStatement'),
+    description: text("description").notNull(),
+    designLink: text("designLink").notNull(),
     headerimage: text("headerimage").notNull(), // Changed from 'image' to 'headerimage'
+    contentHeader: text("contentHeader"),
+    contentHeader2: text("contentHeader2"),
     content: text("content").notNull(),
     images: text("images"),
+    presentationLink:text('presentationLink'),
+    conclusion: text("conclusion"),
     createdAt: timestamp("createdAt").defaultNow().notNull(),
   },
   (blog) => {
