@@ -6,7 +6,7 @@ import { addProject } from "@/app/Riishi/Projects/Requests";
 import { useFormik } from "formik";
 import { toast } from "@/shadcn/ui/use-toast";
 import { ToastAction } from "@/shadcn/ui/toast";
-
+import { useRouter } from "next/navigation";
 
 const AddProject = () => {
   const [imagePreview, setImagePreview] = useState<string | undefined>(
@@ -17,6 +17,7 @@ const AddProject = () => {
   //   console.log(imagePreview, designImage);
 
   useEffect(() => {
+    // if (typeof window !== "undefined") {
     const coverImage = localStorage.getItem("cover");
     if (coverImage) {
       setImagePreview("data:image/png;base64," + coverImage);
@@ -25,6 +26,7 @@ const AddProject = () => {
     if (designImage) {
       setDesignImage("data:image/png;base64," + designImage);
     }
+    // }
   }, []);
 
   function compressAndSave(
@@ -137,6 +139,8 @@ const AddProject = () => {
     };
   };
 
+  const router = useRouter();
+
   const mutation = useMutation({
     mutationFn: async (values: any) => {
       console.log(values);
@@ -145,9 +149,12 @@ const AddProject = () => {
     },
     onSuccess(data) {
       formik.resetForm();
+      handleRemoveImage("headerimage", "cover", setImagePreview);
+      handleRemoveImage("designs", "design", setDesignImage);
       toast({
         description: data.message,
-      })
+      });
+      router.push("/Riishi");
     },
     onError() {
       toast({
@@ -169,6 +176,8 @@ const AddProject = () => {
       objectives: "",
       functionaliy: "",
       designs: "",
+      github: "",
+      url: "",
       conclusion: "",
     },
     // validationSchema: {},
@@ -249,6 +258,58 @@ const AddProject = () => {
                         onBlur={formik.handleBlur}
                         onChange={formik.handleChange}
                         value={formik.values.name}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div className="sm:col-span-4">
+                  <label
+                    htmlFor="username"
+                    className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-200"
+                  >
+                    Github Link
+                  </label>
+                  <div className="mt-2">
+                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                      <input
+                        type="text"
+                        name="github"
+                        id="github"
+                        autoComplete="github"
+                        className="block flex-1 border-0 bg-transparent py-1.5 pl-4 dark:text-gray-200 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                        placeholder="Github Link"
+                        onBlur={formik.handleBlur}
+                        onChange={formik.handleChange}
+                        value={formik.values.github}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-5 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                <div className="sm:col-span-4">
+                  <label
+                    htmlFor="username"
+                    className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-200"
+                  >
+                    Project URL
+                  </label>
+                  <div className="mt-2">
+                    <div className="flex rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-600 sm:max-w-md">
+                      <input
+                        type="text"
+                        name="url"
+                        id="url"
+                        autoComplete="url"
+                        className="block flex-1 border-0 bg-transparent py-1.5 pl-4 dark:text-gray-200 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                        placeholder="Project URL"
+                        onBlur={formik.handleBlur}
+                        onChange={formik.handleChange}
+                        value={formik.values.url}
                       />
                     </div>
                   </div>

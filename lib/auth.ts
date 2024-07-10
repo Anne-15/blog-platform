@@ -1,3 +1,4 @@
+'use server'
 import { db } from "@/drizzle/db";
 import { UserTable } from "@/drizzle/schema";
 import { eq } from "drizzle-orm";
@@ -47,10 +48,10 @@ export async function logout(){
   cookies().set("session", "", {expires: new Date(0)})
 }
 
-export async function getSession(){
-  const session = cookies().get("session")?.value;
-  if(!session) return null;
-  return await decrypt(session);
+export async function getSession(request?: NextRequest) {
+  const sessionCookie = request?.cookies.get("session")?.value || cookies().get("session")?.value;
+  if (!sessionCookie) return null;
+  return await decrypt(sessionCookie);
 }
 
 export async function updateSession(request: NextRequest) {
