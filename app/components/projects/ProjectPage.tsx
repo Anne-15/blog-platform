@@ -3,10 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
 import Navbar from "../Navbar";
+import { LinkPreview } from "../ui/link-preview";
 
 const ProjectPage = ({ project }: { project: any }) => {
   const item = project.project;
-  
+
   return (
     <>
       <Navbar />
@@ -42,18 +43,32 @@ const ProjectPage = ({ project }: { project: any }) => {
               <p>{item.desc}</p>
               <p>{item.backgroundInfo}</p>
               <p>{item.objectives}</p>
-              <div className="flex items-center justify-center">
-                <Image
-                  src={item.designs || "/landscape.jpg"}
-                  alt="project image"
-                  layout=""
-                  width={650}
-                  height={500}
-                  objectFit=""
-                  objectPosition=""
-                  className="rounded-lg"
-                />
-              </div>
+              {item.designs && (
+                <div className="flex items-center justify-center">
+                  <div className="flex flex-col">
+                    <Image
+                      src={item.designs || "/landscape.jpg"}
+                      alt="project image"
+                      layout=""
+                      width={650}
+                      height={500}
+                      objectFit=""
+                      objectPosition=""
+                      className="rounded-lg"
+                    />
+                    <div className="text-center py-6">
+                      Check the source code of the project on GitHub.
+                      <LinkPreview
+                        url="https://tailwindcss.com"
+                        className="font-bold text-purple-800 dark:text-purple-200"
+                      >
+                        Github Project Link
+                      </LinkPreview>{" "}
+                    </div>
+                  </div>
+                </div>
+              )}
+
               <p>{item.functionaliy}</p>
               <p>{item.conclusion}</p>
             </div>
