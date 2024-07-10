@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
-import Navbar from "@/app/components/Navbar";
+import Navbar from "../Navbar";
 
 const ProjectPage = ({ project }: { project: any }) => {
   const item = project.project;
@@ -15,7 +15,7 @@ const ProjectPage = ({ project }: { project: any }) => {
           <article>
             <header className="flex flex-col">
               <div className="flex justify-between items-center">
-                <Link href="/Projects">
+                <Link href="/Riishi/Projects">
                   <div className="rounded-full hover:shadow-md w-10 h-10 flex items-center justify-center border cursor-pointer">
                     <FaArrowLeft />
                   </div>

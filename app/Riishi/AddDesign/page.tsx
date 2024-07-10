@@ -1,10 +1,10 @@
+import AddDesigns from '@/app/components/designs/AddDesigns'
 import React from 'react'
-import AddProject from '../components/projects/AddProject'
 
 const page = () => {
   return (
     <div>
-        <AddProject/>
+        <AddDesigns/>
     </div>
   )
 }

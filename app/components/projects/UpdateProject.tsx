@@ -2,10 +2,11 @@
 import React, { MouseEventHandler, useEffect, useState } from "react";
 import { default as NextImage } from "next/image";
 import { useMutation } from "@tanstack/react-query";
-import { addProject } from "@/app/Projects/Requests";
+import { addProject } from "@/app/Riishi/Projects/Requests";
 import { useFormik } from "formik";
-import { ToastAction } from "@/components/ui/toast";
-import { toast } from "@/components/ui/use-toast";
+import { toast } from "@/shadcn/ui/use-toast";
+import { ToastAction } from "@/shadcn/ui/toast";
+
 
 const AddProject = () => {
   const [imagePreview, setImagePreview] = useState<string | undefined>(

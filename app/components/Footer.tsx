@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import MagicButton from "./MagicButton";
-import { socialMedia } from "@/data/projects";
 import { ThemeToggle } from "./ThemeToggle";
 
 const Footer = () => {
@@ -35,7 +34,7 @@ const Footer = () => {
           Copyright © 2024 Anne Wariiyu
         </p>
         <div className="flex items-center md:gap-3 gap-6">
-          {socialMedia.length === 0 ? (
+          {/* {socialMedia.length === 0 ? (
             <div>No data</div>
           ) : (
             socialMedia.map((social) => (
@@ -58,7 +57,7 @@ const Footer = () => {
                 </a>
               </div>
             ))
-          )}
+          )} */}
         </div>
       </div>
     </footer>

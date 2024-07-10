@@ -1,6 +1,6 @@
 "use client";
+import DesignProjects from "@/app/components/designs/DesignProjects";
 import React from "react";
-import DesignProjects from "../components/designs/DesignProjects";
 
 const Blogs = () => {
   return (

@@ -48,17 +48,7 @@ const AboutPage = () => {
             experiences.
           </p>
           <p>Here's a timeline of what I've been up to:</p>
-          <div className="p-10"></div>
-          <div className="flex flex-row justify-around invisible" >
-            <Link href={"/AddProject"}>
-              {" "}
-              <button>Add Software Project</button>{" "}
-            </Link>
-            <Link href={"/AddDesign"}>
-              {" "}
-              <button>Add Design Project</button>{" "}
-            </Link>
-          </div>
+          
         </div>
       </div>
 

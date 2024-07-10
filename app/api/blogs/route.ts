@@ -4,8 +4,24 @@ import { NextRequest, NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
 
 export const POST = async (req: NextRequest) => {
-  const { name, title, category, description, headerimage, content, images } =
-    await req.json();
+  const {
+    name,
+    title,
+    category,
+    projectType,
+    role,
+    indutry,
+    problemStatement,
+    description,
+    designLink,
+    headerimage,
+    contentHeader,
+    contentHeader2,
+    content,
+    images,
+    presentationLink,
+    conclusion,
+  } = await req.json();
 
   // Validate request body
   if (
@@ -13,6 +29,7 @@ export const POST = async (req: NextRequest) => {
     !title ||
     !category ||
     !description ||
+    !designLink ||
     !headerimage ||
     !content
   ) {
@@ -29,10 +46,19 @@ export const POST = async (req: NextRequest) => {
         name,
         title,
         category,
+        projectType,
+        role,
+        indutry,
+        problemStatement,
         description,
+        designLink,
         headerimage,
+        contentHeader,
+        contentHeader2,
         content,
         images,
+        presentationLink,
+        conclusion,
       })
       .returning()
       .execute();

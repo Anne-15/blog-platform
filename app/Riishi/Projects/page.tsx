@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import HeroSection from "../components/projects/HeroSection";
-import ProjectContent from "../components/projects/ProjectContent";
 import { allsoftwarePJS } from "./Requests";
+import HeroSection from "@/app/components/projects/HeroSection";
+import ProjectContent from "@/app/components/projects/ProjectContent";
 
 const page = async () => {
   const softwaredata = await allsoftwarePJS();

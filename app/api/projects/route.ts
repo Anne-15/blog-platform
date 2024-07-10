@@ -13,6 +13,8 @@ export const POST = async (req: NextRequest) => {
     objectives,
     functionaliy,
     designs,
+    github,
+    siteurl,
     conclusion,
   } = await req.json();
 
@@ -24,9 +26,7 @@ export const POST = async (req: NextRequest) => {
     !headerimage ||
     !backgroundInfo ||
     !objectives ||
-    !functionaliy ||
-    !designs ||
-    !conclusion
+    !github
   ) {
     return NextResponse.json(
       { message: "Missing required fields" },
@@ -46,6 +46,8 @@ export const POST = async (req: NextRequest) => {
         objectives,
         functionaliy,
         designs,
+        github,
+        siteurl,
         conclusion,
       })
       .returning()

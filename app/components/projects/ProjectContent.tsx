@@ -31,7 +31,7 @@ const ProjectContent = ({ softwaredata }: { softwaredata: any }) => {
             header={headers[i % headers.length].header}
             className={classes[i % classes.length].className}
             icon={icons[i % icons.length].icon}
-            link={`/Projects/${item.id}`}
+            link={`/Riishi/Projects/${item.id}`}
           />
         ))}
       </BentoGrid>

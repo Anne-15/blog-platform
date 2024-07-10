@@ -1,9 +1,5 @@
 "use client";
-import Footer from "@/app/components/Footer";
 import MagicButton from "@/app/components/MagicButton";
-import Navbar from "@/app/components/Navbar";
-import { BackgroundGradient } from "@/app/components/ui/background-gradient";
-import { BackgroundGradientAnimation } from "@/app/components/ui/background-gradient-animation";
 import { LinkPreview } from "@/app/components/ui/link-preview";
 import { TypewriterEffectSmooth } from "@/app/components/ui/typewriter-effect";
 import { cn } from "@/utils/cn";

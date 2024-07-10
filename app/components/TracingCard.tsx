@@ -2,10 +2,8 @@
 import React from "react";
 import { TracingBeam } from "./ui/tracing-beam";
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import MagicButton from "./MagicButton";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 const TracingCard = ({content}:{content:any}) => {
   const dummyContent:any = content?.projects;
@@ -46,7 +44,7 @@ const TracingCard = ({content}:{content:any}) => {
               </div>
               
               <div className="flex justify-end">
-                <Link href={`/Projects/${item.id}`}  className="gap-2">
+                <Link href={`/Riishi/Projects/${item.id}`}  className="gap-2">
                   <MagicButton title={"Learn More"} />
                 </Link>
               </div>

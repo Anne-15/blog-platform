@@ -38,7 +38,7 @@ const DesignsPage = () => {
           </div>
 
           <div>
-            <Link href="/" className="gap-2">
+            <Link href="/Riishi/" className="gap-2">
               <MagicButton title={"View Case Study"} />
             </Link>
           </div>
@@ -77,7 +77,7 @@ const DesignsPage = () => {
           </div>
 
           <div>
-            <Link href="/" className="gap-2">
+            <Link href="/Riishi/" className="gap-2">
               <MagicButton title={"View Case Study"} />
             </Link>
           </div>

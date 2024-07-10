@@ -7,17 +7,17 @@ const Navbar = () => {
   const navItems = [
     {
       name: "Home",
-      link: "/",
+      link: "/Riishi/",
       icon: <IconHome className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
     {
       name: "Software Projects",
-      link: "/Projects",
+      link: "/Riishi/Projects",
       icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
     },
     {
       name: "Design Projects",
-      link: "/Blogs",
+      link: "/Riishi/Blogs",
       icon: (
         <IconMessage className="h-4 w-4 text-neutral-500 dark:text-white" />
       ),

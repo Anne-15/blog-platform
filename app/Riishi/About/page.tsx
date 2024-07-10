@@ -1,5 +1,5 @@
+import AboutPage from "@/app/components/About";
 import React from "react";
-import AboutPage from "../components/About";
 
 const About = () => {
   return (
