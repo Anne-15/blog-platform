@@ -12,8 +12,8 @@ export async function Login() {
   
   const handleSubmit = async (formData: FormData) => {
     await login(formData);
-    // const redirectTo = new URLSearchParams(window.location.search).get("redirectTo");
-    // router.push(redirectTo || "/Riishi/AddProject"); // Default to /Riishi/AddProject if no redirectTo
+    const redirectTo = new URLSearchParams(window.location.search).get("redirectTo");
+    router.push(redirectTo || "/Riishi/AddProject"); // Default to /Riishi/AddProject if no redirectTo
   };
   
   return (

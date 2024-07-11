@@ -1,9 +1,9 @@
 'use server'
 import { NextRequest, NextResponse } from "next/server";
-import { updateSession } from "./lib/auth";
+import { getSession } from "./lib/auth";
 
 export async function middleware(request: NextRequest) {
-  const session = request.cookies.get("session")?.value;
+  const session = await getSession(request);
   const protectedRoutes = ["/Riishi/AddProject", "/Riishi/AddDesign"];
 
   console.log(request);
