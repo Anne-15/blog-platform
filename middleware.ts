@@ -15,7 +15,7 @@ export async function middleware(request: NextRequest) {
   }
 
   // await updateSession(request);
-  return request.nextUrl;
+  return NextResponse.next();
 }
 
 export const config = {
