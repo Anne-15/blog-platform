@@ -171,7 +171,7 @@ const AddDesigns = () => {
       category: "",
       projectType: "",
       role: "",
-      indutry: "",
+      industry: "",
       problemStatement: "",
       description: "",
       designLink: "",
@@ -480,12 +480,12 @@ const AddDesigns = () => {
                   </label>
                   <div className="mt-2">
                     <input
-                      id="indutry"
-                      name="indutry"
+                      id="industry"
+                      name="industry"
                       className="block w-full rounded-md border-0 py-1.5 pl-4 dark:text-gray-200 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       onBlur={formik.handleBlur}
                       onChange={formik.handleChange}
-                      value={formik.values.indutry}
+                      value={formik.values.industry}
                     />
                   </div>
                   <p className="mt-3 text-sm leading-6 text-gray-600 dark:text-gray-200">

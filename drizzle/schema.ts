@@ -55,7 +55,7 @@ export const BlogsTable = pgTable(
     category: text("category").notNull(),
     projectType: text('projectType'),
     role: text('role'),
-    indutry: text('industry'),
+    industry: text('industry'),
     problemStatement: text('problemStatement'),
     description: text("description").notNull(),
     designLink: text("designLink").notNull(),
