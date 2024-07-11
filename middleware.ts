@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function middleware(request: NextRequest) {
   const session = request.cookies.get("session")?.value;
-  const protectedRoutes = ["/Riishi/AddProject"];
+  const protectedRoutes = ["/Riishi/AddProject", "/Riishi/AddDesign"];
 
   // Check if the requested route is protected and there is no session
   if (protectedRoutes.includes(request.nextUrl.pathname) && !session) {
@@ -18,5 +18,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/Riishi/AddProject"],
+  matcher: ["/Riishi/AddProject", "/Riishi/AddDesign"],
 };

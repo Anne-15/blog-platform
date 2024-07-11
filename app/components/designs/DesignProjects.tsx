@@ -8,9 +8,7 @@ import { BackgroundGradient } from "../ui/background-gradient";
 import Link from "next/link";
 
 const DesignProjects = ({ designs }: { designs: any }) => {
-  // console.log(designs);
-  const designBlog = designs.blogs;
-  console.log(designBlog);
+  const designBlog = designs?.blogs;
   return (
     <div>
       <HeroHighlight>
@@ -49,19 +47,21 @@ const DesignProjects = ({ designs }: { designs: any }) => {
           </p>
         </div>
         <div className="md:grid md:grid-cols-2 gap-6 p-4">
-          {designBlog.map((item: any, i: number) => {
-            <BackgroundGradient className="rounded-[22px] p-4 sm:p-10 bg-white dark:bg-zinc-900" key={i}>
+          {designBlog.map((item: any, i: number) => (
+            <BackgroundGradient
+              className="rounded-[22px] p-4 sm:p-10 bg-white dark:bg-zinc-900"
+              key={i}
+            >
               <Image
                 src={item.headerimage || `/landscape.jpg`}
                 alt={item.title}
-                height="600"
-                width="600"
+                height={600}
+                width={600}
                 className="object-cover rounded-md"
               />
               <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
                 {item.name}
               </p>
-
               <p className="text-sm text-neutral-600 dark:text-neutral-400">
                 {item.description}
               </p>
@@ -72,32 +72,8 @@ const DesignProjects = ({ designs }: { designs: any }) => {
                   </span>
                 </button>
               </Link>
-            </BackgroundGradient>;
-          })}
-
-          {/* <BackgroundGradient className="rounded-[22px]  p-4 sm:p-10 bg-white dark:bg-zinc-900">
-            <Image
-              src={`/landscape.jpg`}
-              alt="jordans"
-              height="600"
-              width="600"
-              className="object-cover rounded-md"
-            />
-            <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
-              Air Jordan 4 Retro Reimagined
-            </p>
-
-            <p className="text-sm text-neutral-600 dark:text-neutral-400">
-              The Air Jordan 4 Retro Reimagined Bred will release on Saturday,
-              February 17, 2024. Your best opportunity to get these right now is
-              by entering raffles and waiting for the official releases.
-            </p>
-            <button className="rounded-full pl-4 pr-1 py-1 text-white flex items-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800">
-              <span className="bg-zinc-700 rounded-full text-[0.6rem] px-2 py-0 text-white">
-                Read Case Study
-              </span>
-            </button>
-          </BackgroundGradient> */}
+            </BackgroundGradient>
+          ))}
         </div>
       </div>
     </div>
