@@ -10,6 +10,7 @@ import Link from "next/link";
 const DesignProjects = ({ designs }: { designs: any }) => {
   // console.log(designs);
   const designBlog = designs.blogs;
+  console.log(designBlog);
   return (
     <div>
       <HeroHighlight>
@@ -49,7 +50,7 @@ const DesignProjects = ({ designs }: { designs: any }) => {
         </div>
         <div className="md:grid md:grid-cols-2 gap-6 p-4">
           {designBlog.map((item: any, i: number) => {
-            <BackgroundGradient className="rounded-[22px] p-4 sm:p-10 bg-white dark:bg-zinc-900">
+            <BackgroundGradient className="rounded-[22px] p-4 sm:p-10 bg-white dark:bg-zinc-900" key={i}>
               <Image
                 src={item.headerimage || `/landscape.jpg`}
                 alt={item.title}

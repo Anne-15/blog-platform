@@ -5,6 +5,7 @@ import { alldesigns } from "./Requests";
 
 const Blogs = async() => {
   const designs = await alldesigns();
+  console.log(designs.blogs);
   return (
       <div>
         <DesignProjects designs={designs}/>
