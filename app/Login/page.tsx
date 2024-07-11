@@ -1,10 +1,12 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Login } from "../components/Login";
 
 const page = () => {
   return (
     <div className="container mx-auto mt-20">
-      <Login />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Login />
+      </Suspense>
     </div>
   );
 };

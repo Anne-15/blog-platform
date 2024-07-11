@@ -4,16 +4,17 @@ import { cn } from "@/utils/cn";
 import { Input } from "@/shadcn/ui/input";
 import { Label } from "@/shadcn/ui/label";
 import { login } from "@/lib/auth";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 
 export async function Login() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const redirectTo = searchParams.get("redirectTo") || "/Riishi/AddProject";
   
   const handleSubmit = async (formData: FormData) => {
     await login(formData);
-    const redirectTo = new URLSearchParams(window.location.search).get("redirectTo");
-    router.push(redirectTo || "/Riishi/AddProject"); // Default to /Riishi/AddProject if no redirectTo
+    router.push(redirectTo); // Default to /Riishi/AddProject if no redirectTo
   };
   
   return (
@@ -26,7 +27,6 @@ export async function Login() {
       </p>
 
       <form className="my-8" action={(e:any) => {
-        e.preventDefault();
         const formData = new FormData(e.currentTarget);
         handleSubmit(formData);
       }}>
