@@ -1,13 +1,14 @@
 "use client";
 import DesignProjects from "@/app/components/designs/DesignProjects";
 import React from "react";
+import { alldesigns } from "./Requests";
 
-const Blogs = () => {
+const Blogs = async() => {
+  const designs = await alldesigns();
   return (
       <div>
-        <DesignProjects/>
+        <DesignProjects designs={designs}/>
       </div>
-
   );
 };
 

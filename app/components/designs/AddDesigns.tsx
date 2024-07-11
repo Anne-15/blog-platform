@@ -142,7 +142,6 @@ const AddDesigns = () => {
 
   const mutation = useMutation({
     mutationFn: async (values: any) => {
-      console.log(values);
       const data = await addDesign(values);
       return data;
     },
@@ -172,7 +171,7 @@ const AddDesigns = () => {
       category: "",
       projectType: "",
       role: "",
-      industry: "",
+      indutry: "",
       problemStatement: "",
       description: "",
       designLink: "",
@@ -186,7 +185,6 @@ const AddDesigns = () => {
     },
     // validationSchema: {},
     onSubmit: (values) => {
-      console.log(values);
       mutation.mutate(values);
     },
   });
@@ -478,16 +476,16 @@ const AddDesigns = () => {
                     htmlFor="about"
                     className="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-200"
                   >
-                    Project Industry
+                    Project indutry
                   </label>
                   <div className="mt-2">
                     <input
-                      id="industry"
-                      name="industry"
+                      id="indutry"
+                      name="indutry"
                       className="block w-full rounded-md border-0 py-1.5 pl-4 dark:text-gray-200 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       onBlur={formik.handleBlur}
                       onChange={formik.handleChange}
-                      value={formik.values.industry}
+                      value={formik.values.indutry}
                     />
                   </div>
                   <p className="mt-3 text-sm leading-6 text-gray-600 dark:text-gray-200">
