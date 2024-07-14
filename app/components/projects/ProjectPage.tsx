@@ -57,9 +57,9 @@ const ProjectPage = ({ project }: { project: any }) => {
                       className="rounded-lg"
                     />
                     <div className="text-center py-6">
-                      Check the source code of the project on GitHub.
+                      Check the source code of the project on GitHub.{" "}
                       <LinkPreview
-                        url="https://tailwindcss.com"
+                        url={item.github}
                         className="font-bold text-purple-800 dark:text-purple-200"
                       >
                         Github Project Link

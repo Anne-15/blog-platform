@@ -17,7 +17,6 @@ const AddProject = () => {
   //   console.log(imagePreview, designImage);
 
   useEffect(() => {
-    // if (typeof window !== "undefined") {
     const coverImage = localStorage.getItem("cover");
     if (coverImage) {
       setImagePreview("data:image/png;base64," + coverImage);
@@ -26,7 +25,6 @@ const AddProject = () => {
     if (designImage) {
       setDesignImage("data:image/png;base64," + designImage);
     }
-    // }
   }, []);
 
   function compressAndSave(
@@ -143,7 +141,6 @@ const AddProject = () => {
 
   const mutation = useMutation({
     mutationFn: async (values: any) => {
-      console.log(values);
       const data = await addProject(values);
       return data;
     },
@@ -180,9 +177,7 @@ const AddProject = () => {
       url: "",
       conclusion: "",
     },
-    // validationSchema: {},
     onSubmit: (values) => {
-      console.log(values);
       mutation.mutate(values);
     },
   });
