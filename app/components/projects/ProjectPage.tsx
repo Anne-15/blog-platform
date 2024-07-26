@@ -43,9 +43,10 @@ const ProjectPage = ({ project }: { project: any }) => {
               <p>{item.desc}</p>
               <p>{item.backgroundInfo}</p>
               <p>{item.objectives}</p>
-              {item.designs && (
-                <div className="flex items-center justify-center">
-                  <div className="flex flex-col">
+
+              <div className="flex items-center justify-center">
+                <div className="flex flex-col">
+                  {item.designs && (
                     <Image
                       src={item.designs || "/landscape.jpg"}
                       alt="project image"
@@ -56,6 +57,8 @@ const ProjectPage = ({ project }: { project: any }) => {
                       objectPosition=""
                       className="rounded-lg"
                     />
+                  )}
+                  {item.github && (
                     <div className="text-center py-6">
                       Check the source code of the project on GitHub.{" "}
                       <LinkPreview
@@ -65,9 +68,9 @@ const ProjectPage = ({ project }: { project: any }) => {
                         Github Project Link
                       </LinkPreview>{" "}
                     </div>
-                  </div>
+                  )}
                 </div>
-              )}
+              </div>
 
               <p>{item.functionaliy}</p>
               <p>{item.conclusion}</p>

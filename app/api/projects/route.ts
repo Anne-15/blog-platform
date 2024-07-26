@@ -132,6 +132,8 @@ export const PUT = async (req: NextRequest) => {
     objectives,
     functionaliy,
     designs,
+    github,
+    siteurl,
     conclusion,
   } = await req.json();
   const { searchParams } = new URL(req.url);
@@ -145,9 +147,7 @@ export const PUT = async (req: NextRequest) => {
     !headerimage ||
     !backgroundInfo ||
     !objectives ||
-    !functionaliy ||
-    !designs ||
-    !conclusion
+    !github
   ) {
     return NextResponse.json(
       { message: "Missing required fields" },
@@ -167,6 +167,8 @@ export const PUT = async (req: NextRequest) => {
         objectives,
         functionaliy,
         designs,
+        github,
+        siteurl,
         conclusion,
       })
       .where(eq(ProjectsTable.id, Number(id)))
