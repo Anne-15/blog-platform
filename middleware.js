@@ -7,7 +7,7 @@ export const authroutes = ["/Login", "/Signup"];
 
 const apiAuthPrefix = "/api/auth";
 
-const DEFAULT_LOGIN_REDIRECT = "/";
+const DEFAULT_LOGIN_REDIRECT = "/Riishi";
 
 const { auth } = NextAuth(authConfig);
 
@@ -39,5 +39,5 @@ export default auth((req) => {
 });
 
 export const config = {
-  matcher: ["/Riishi/AddProject", "/Riishi/AddDesign"],
+  matcher: ["/(api|trpc)(.*)", "/Riishi/AddProject", "/Riishi/AddDesign"],
 };

@@ -38,7 +38,7 @@ export const {
     strategy: "jwt",
   },
   callbacks: {
-    jwt: async ({ token, user, profile }) => {
+    jwt: async ({ token, user }) => {
       if (user) token = user as unknown as { [key: string]: any };
       return token;
     },
@@ -52,6 +52,6 @@ export const {
   },
   secret: process.env.AUTH_SECRET!,
   pages: {
-    signIn: "/login",
+    signIn: "/Login",
   },
 });
