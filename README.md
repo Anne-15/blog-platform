@@ -20,6 +20,23 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Project Overview
+This platform is designed as a social media-inspired space for software engineering and product design projects. 
+
+It allows users to share the stories behind their projects, providing a unique platform for those involved in diverse and creative work. 
+
+The project was an exploration of NextJS's extensive capabilities in frontend, backend API, and database integration.
+
+## Key Features
+- Dashboard: Highlights recent projects in software engineering and product design.
+- Project Pages: Dedicated pages for both software engineering and product design projects.
+- Profile Page: Showcases personal experiences and expertise.
+
+## Unique Points:
+- Developed a unique social media-like platform tailored for sharing project stories.
+- Explored and utilized NextJS for both frontend and backend capabilities.
+- Implemented a clean and responsive design using Tailwind CSS, enhancing user experience.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
