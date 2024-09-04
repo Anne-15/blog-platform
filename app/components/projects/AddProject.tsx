@@ -4,9 +4,9 @@ import { default as NextImage } from "next/image";
 import { useMutation } from "@tanstack/react-query";
 import { addProject } from "@/app/Riishi/Projects/Requests";
 import { useFormik } from "formik";
-import { toast } from "@/shadcn/ui/use-toast";
-import { ToastAction } from "@/shadcn/ui/toast";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { Bounce, toast } from "react-toastify";
 
 const AddProject = () => {
   const [imagePreview, setImagePreview] = useState<string | undefined>(
@@ -144,21 +144,33 @@ const AddProject = () => {
       const data = await addProject(values);
       return data;
     },
-    onSuccess(data) {
+    onSuccess() {
       formik.resetForm();
       handleRemoveImage("headerimage", "cover", setImagePreview);
       handleRemoveImage("designs", "design", setDesignImage);
-      toast({
-        description: data.message,
+      toast.success("🦄 Wow so easy!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
       });
-      router.push("/Riishi");
     },
     onError() {
-      toast({
-        variant: "destructive",
-        title: "Uh oh! Something went wrong.",
-        description: "There was a problem with your request.",
-        action: <ToastAction altText="Try again">Try again</ToastAction>,
+      toast.error("Error Submitting Form!!!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
       });
     },
   });
@@ -572,6 +584,14 @@ const AddProject = () => {
               className="rounded-md w-full bg-black dark:bg-white dark:text-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Save
+            </button>
+          </div>
+          <div className="">
+            <button
+              type="submit"
+              className="rounded-md w-full bg-black dark:bg-white dark:text-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              <Link href={"/api/auth/signout"}>Logout</Link>
             </button>
           </div>
         </form>

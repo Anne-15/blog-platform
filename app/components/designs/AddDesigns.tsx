@@ -4,10 +4,10 @@ import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { addProject } from "@/app/Riishi/Projects/Requests";
-import { toast } from "@/shadcn/ui/use-toast";
-import { ToastAction } from "@radix-ui/react-toast";
 import { default as NextImage } from "next/image";
 import { addDesign } from "@/app/Riishi/Blogs/Requests";
+import Link from "next/link";
+import { Bounce, toast } from "react-toastify";
 
 const AddDesigns = () => {
   const [imagePreview, setImagePreview] = useState<string | undefined>(
@@ -145,25 +145,37 @@ const AddDesigns = () => {
       const data = await addDesign(values);
       return data;
     },
-    onSuccess(data) {
+    onSuccess() {
       formik.resetForm();
       handleRemoveImage("headerimage", "header", setImagePreview);
       handleRemoveImage("designs", "images", setDesignImage);
-      toast({
-        description: data.message,
+      toast.success("🦄 Wow so easy!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
       });
-      router.push("/Riishi");
     },
     onError() {
-      toast({
-        variant: "destructive",
-        title: "Uh oh! Something went wrong.",
-        description: "There was a problem with your request.",
-        action: <ToastAction altText="Try again">Try again</ToastAction>,
+      toast.error("Error Submitting Form!!!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        transition: Bounce,
       });
     },
   });
-  
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -176,11 +188,11 @@ const AddDesigns = () => {
       description: "",
       designLink: "",
       headerimage: "",
-      contentHeader:"",
-      contentHeader2:"",
-      content:"",
-      images:"",
-      presentationLink:"",
+      contentHeader: "",
+      contentHeader2: "",
+      content: "",
+      images: "",
+      presentationLink: "",
       conclusion: "",
     },
     // validationSchema: {},
@@ -196,7 +208,7 @@ const AddDesigns = () => {
   useEffect(() => {
     formik.setFieldValue("images", designImage);
   }, [designImage]);
-  
+
   return (
     <div className="mt-20">
       <div className="min-h-screen flex items-center justify-center">
@@ -310,7 +322,8 @@ const AddDesigns = () => {
                   />
                 </div>
                 <p className="mt-3 text-sm leading-6 text-gray-600 dark:text-gray-200">
-                  What is the problem we are trying to solve by design? (not more than 7 words) Make it catchy!
+                  What is the problem we are trying to solve by design? (not
+                  more than 7 words) Make it catchy!
                 </p>
               </div>
 
@@ -423,7 +436,8 @@ const AddDesigns = () => {
                     />
                   </div>
                   <p className="mt-3 text-sm leading-6 text-gray-600 dark:text-gray-200">
-                    The project category can either be an original or a redesign.
+                    The project category can either be an original or a
+                    redesign.
                   </p>
                 </div>
 
@@ -535,7 +549,8 @@ const AddDesigns = () => {
                     />
                   </div>
                   <p className="mt-3 text-sm leading-6 text-gray-600 dark:text-gray-200">
-                    Write another title for your design, describe what is in the content.
+                    Write another title for your design, describe what is in the
+                    content.
                   </p>
                 </div>
 
@@ -558,7 +573,8 @@ const AddDesigns = () => {
                     />
                   </div>
                   <p className="mt-3 text-sm leading-6 text-gray-600 dark:text-gray-200">
-                    Write a brief background story of the topic of your project. Keep people guessing and click on the presentation link
+                    Write a brief background story of the topic of your project.
+                    Keep people guessing and click on the presentation link
                   </p>
                 </div>
 
@@ -680,6 +696,14 @@ const AddDesigns = () => {
               className="rounded-md w-full bg-black dark:bg-white dark:text-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Save
+            </button>
+          </div>
+          <div className="">
+            <button
+              type="submit"
+              className="rounded-md w-full bg-black dark:bg-white dark:text-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              <Link href={"/api/auth/signout"}>Logout</Link>
             </button>
           </div>
         </form>
