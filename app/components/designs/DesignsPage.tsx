@@ -5,11 +5,22 @@ import MagicButton from "../MagicButton";
 
 const DesignsPage = ({ content }: { content: any }) => {
   const designs = content?.blogs;
+  const sortedContent = designs?.sort(
+    (a: { createdAt: string }, b: { createdAt: string }) => {
+      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+    }
+  );
+
+  const limitedContent = sortedContent?.slice(0, 3);
+  
   return (
     <div className="mx-auto">
       {/* design card */}
-      {designs.map((item: any, i: number) => (
-        <div className="md:grid md:grid-cols-2 gap-2 items-center justify-items-center" key={i}>
+      {limitedContent.map((item: any, i: number) => (
+        <div
+          className="md:grid md:grid-cols-2 gap-2 items-center justify-items-center"
+          key={i}
+        >
           {/* image */}
           <div className="text-sm  prose prose-sm dark:prose-invert">
             <Image
@@ -33,7 +44,8 @@ const DesignsPage = ({ content }: { content: any }) => {
             </div>
             {/* description */}
             <div className="text-sm text-slate-600 dark:text-slate-300">
-              Improving user interactions and usability with beautiful and useful designs, use cases and interactions.
+              Improving user interactions and usability with beautiful and
+              useful designs, use cases and interactions.
             </div>
             {/* details */}
             <div className="text-sm leading-loose tracking-widest text-slate-800 dark:text-slate-300">
@@ -50,7 +62,6 @@ const DesignsPage = ({ content }: { content: any }) => {
           </div>
         </div>
       ))}
-      
     </div>
   );
 };
