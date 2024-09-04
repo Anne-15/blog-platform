@@ -5,6 +5,7 @@ import { Input } from "@/shadcn/ui/input";
 import { Label } from "@/shadcn/ui/label";
 import { login } from "@/lib/auth";
 import { useRouter, useSearchParams } from "next/navigation";
+import { signIn } from "@/auth";
 
 
 export async function Login() {
@@ -13,7 +14,8 @@ export async function Login() {
   const redirectTo = searchParams.get("redirectTo") || "/Riishi/AddProject";
   
   const handleSubmit = async (formData: FormData) => {
-    await login(formData);
+    await signIn("credentials", formData);
+    // await login(formData);
     router.push(redirectTo); // Default to /Riishi/AddProject if no redirectTo
   };
   
