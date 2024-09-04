@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./provider";
-import { ReactQueryProvider } from "./QueryClientProvider";
+import { ReactQueryProvider } from "../QueryClientProvider";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 

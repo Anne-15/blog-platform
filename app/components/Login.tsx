@@ -6,19 +6,56 @@ import { Label } from "@/shadcn/ui/label";
 import { login } from "@/lib/auth";
 import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "@/auth";
-
+import { useMutation } from "@tanstack/react-query";
+import { Bounce, toast } from "react-toastify";
 
 export async function Login() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirectTo = searchParams.get("redirectTo") || "/Riishi/AddProject";
-  
-  const handleSubmit = async (formData: FormData) => {
-    await signIn("credentials", formData);
-    // await login(formData);
-    router.push(redirectTo); // Default to /Riishi/AddProject if no redirectTo
+
+  const mutation = useMutation({
+    mutationFn: async (formData: FormData) => {
+      const res = await signIn("credentials", {
+        email: formData.get("email") as string,
+        password: formData.get("password") as string,
+      });
+      return res;
+    },
+    onSuccess() {
+      toast.success("Login Operation Successfully", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    },
+    onError: () => {
+      toast.error("Error, try again!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    },
+  });
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    const formData: any = new FormData(event.currentTarget);
+    await mutation.mutate(formData);
+    await router.push(redirectTo); // Default to /Riishi/AddProject if no redirectTo
   };
-  
+
   return (
     <div className="max-w-md w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black">
       <h2 className="font-bold text-xl text-neutral-800 dark:text-neutral-200">
@@ -28,10 +65,12 @@ export async function Login() {
         Login to riishi if you can because we don&apos;t have a login flow yet
       </p>
 
-      <form className="my-8" action={(e:any) => {
-        const formData = new FormData(e.currentTarget);
-        handleSubmit(formData);
-      }}>
+      <form
+        className="my-8"
+        action={(e: any) => {
+          handleSubmit(e);
+        }}
+      >
         <LabelInputContainer className="mb-4">
           <Label htmlFor="email">Email Address</Label>
           <Input id="email" placeholder="projectmayhem@fc.com" type="email" />
@@ -50,7 +89,6 @@ export async function Login() {
           Log in &rarr;
           {/* <BottomGradient /> */}
         </button>
-
       </form>
     </div>
   );
