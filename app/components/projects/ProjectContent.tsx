@@ -9,7 +9,10 @@ import {
 import { SkeletonOne, SkeletonThree, SkeletonTwo } from "./Requests";
 
 const ProjectContent = ({ softwaredata }: { softwaredata: any }) => {
-  const projectitem = softwaredata.projects;
+  const projectitem = softwaredata?.projects;
+  const sortedProjects = projectitem?.sort((a:any, b:any) => {
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+  });
   return (
     <div className="mx-auto">
       <div className="pt-8 text-center space-y-2">
@@ -23,7 +26,7 @@ const ProjectContent = ({ softwaredata }: { softwaredata: any }) => {
         </p>
       </div>
       <BentoGrid className="max-w-7xl md:auto-rows-[20rem] my-8">
-        {projectitem.map((item: any, i: number) => (
+        {sortedProjects.map((item: any, i: number) => (
           <BentoGridItem
             key={i}
             title={item.title}

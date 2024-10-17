@@ -12,7 +12,6 @@ const DesignProjects = ({ designs }: { designs: any }) => {
   const sortedDesigns = designBlog?.sort((a:any, b:any) => {
     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
   });
-  console.log(sortedDesigns);
   return (
     <div>
       <HeroHighlight>

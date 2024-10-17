@@ -5,11 +5,10 @@ import MagicButton from "../MagicButton";
 
 const DesignsPage = ({ content }: { content: any }) => {
   const designs = content?.blogs;
-  const sortedContent = designs?.sort(
-    (a: { createdAt: string }, b: { createdAt: string }) => {
-      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-    }
-  );
+  
+  const sortedContent = designs?.sort((a:any, b:any) => {
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+  });
 
   const limitedContent = sortedContent?.slice(0, 3);
   

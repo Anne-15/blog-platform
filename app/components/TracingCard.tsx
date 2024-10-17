@@ -8,11 +8,9 @@ import MagicButton from "./MagicButton";
 const TracingCard = ({ content }: { content: any }) => {
   const dummyContent: any = content?.projects;
 
-  const sortedContent = dummyContent?.sort(
-    (a: { createdAt: string }, b: { createdAt: string }) => {
-      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-    }
-  );
+  const sortedContent = dummyContent?.sort((a:any, b:any) => {
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+  });
 
   const limitedContent = sortedContent?.slice(0, 3);
 
