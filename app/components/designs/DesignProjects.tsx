@@ -9,6 +9,10 @@ import Link from "next/link";
 
 const DesignProjects = ({ designs }: { designs: any }) => {
   const designBlog = designs?.blogs;
+  const sortedDesigns = designBlog?.sort((a:any, b:any) => {
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+  });
+  console.log(sortedDesigns);
   return (
     <div>
       <HeroHighlight>
@@ -47,7 +51,7 @@ const DesignProjects = ({ designs }: { designs: any }) => {
           </p>
         </div>
         <div className="md:grid md:grid-cols-2 gap-6 p-4">
-          {designBlog.map((item: any, i: number) => (
+          {sortedDesigns.map((item: any, i: number) => (
             <BackgroundGradient
               className="rounded-[22px] p-4 sm:p-10 bg-white dark:bg-zinc-900"
               key={i}

@@ -2,7 +2,13 @@ import axios from "axios";
 
 export const alldesigns = async () => {
   try {
-    const res = await axios.get("https://www.riishi.net/api/blogs");
+    const res = await axios.get("https://www.riishi.net/api/blogs", {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      },
+    });
     return res.data;
   } catch (error) {
     console.error("Error fetching projects:", error);
@@ -13,6 +19,11 @@ export const alldesigns = async () => {
 export const getoneDesign = async (id: string) => {
   try {
     const res = await axios.get("https://www.riishi.net/api/blogs", {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      },
       params: { id: id },
     });
     return res.data;
