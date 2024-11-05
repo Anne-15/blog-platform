@@ -10,7 +10,7 @@ const DesignsPage = ({ content }: { content: any }) => {
     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
   });
 
-  const limitedContent = sortedContent?.slice(0, 3);
+  const limitedContent = sortedContent?.slice(0, 3); //limiting content
   
   return (
     <div className="mx-auto">
