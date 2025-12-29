@@ -2,7 +2,7 @@
 import React, { MouseEventHandler, useEffect, useState } from "react";
 import { default as NextImage } from "next/image";
 import { useMutation } from "@tanstack/react-query";
-import { addProject } from "@/app/Riishi/Projects/Requests";
+import { addProject } from "@/app/Riishi/Projects/api";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import Link from "next/link";

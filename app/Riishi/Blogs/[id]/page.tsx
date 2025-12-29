@@ -52,7 +52,7 @@ const page = async ({ params }: { params: { id: string } }) => {
   const designs = await getoneDesign(id);
   const design = designs.blog;
 
-  const problemStatement = design.problemStatement;
+  const problemStatement = design.problemStatement || "";
   const wordsArray = problemStatement.split(" ");
   const words = wordsArray.map((word: string, index: number) => {
     const className = index >= 5 ? "text-purple-800 dark:text-purple-200" : "";

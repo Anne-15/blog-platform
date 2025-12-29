@@ -3,9 +3,9 @@ import React, { MouseEventHandler, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
-import { addProject } from "@/app/Riishi/Projects/Requests";
+import { addProject } from "@/app/Riishi/Projects/api";
 import { default as NextImage } from "next/image";
-import { addDesign } from "@/app/Riishi/Blogs/Requests";
+import { addDesign } from "@/app/Riishi/Blogs/api";
 import Link from "next/link";
 import { Bounce, toast } from "react-toastify";
 
