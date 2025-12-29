@@ -24,10 +24,12 @@ const DesignsPage = ({ content }: { content: any }) => {
           <div className="text-sm  prose prose-sm dark:prose-invert">
             <Image
               src={item.headerimage}
-              alt={item.name}
-              height="400"
-              width="600"
+              alt={`${item.name} design project thumbnail`}
+              height={400}
+              width={600}
               className="rounded-lg mb-10 object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+              loading={i === 0 ? "eager" : "lazy"}
             />
           </div>
 

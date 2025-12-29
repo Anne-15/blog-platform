@@ -16,9 +16,9 @@ const ProjectPage = ({ project }: { project: any }) => {
           <article>
             <header className="flex flex-col">
               <div className="flex justify-between items-center">
-                <Link href="/Riishi/Projects">
+                <Link href="/Riishi/Projects" aria-label="Navigate back to projects">
                   <div className="rounded-full hover:shadow-md w-10 h-10 flex items-center justify-center border cursor-pointer">
-                    <FaArrowLeft />
+                    <FaArrowLeft aria-hidden="true" />
                   </div>
                 </Link>
                 {/* <button className="font-bold text-purple-800 dark:hover:text-purple-400 dark:text-purple-200">
@@ -28,14 +28,14 @@ const ProjectPage = ({ project }: { project: any }) => {
               <h1 className="text-base md:text-xl lg:text-4xl font-semibold bg-clip-text py-4">
                 {item.name}
               </h1>
-              <div className="w-full mt-4 aspect-w-16 aspect-h-10 bg-gray-100 rounded-lg overflow-hidden xl:aspect-w-16 xl:aspect-h-10 relative">
+              <div className="w-full mt-4 aspect-video bg-gray-100 rounded-lg overflow-hidden relative">
                 <Image
                   src={item.image || "/landscape.jpg"}
-                  alt="project image"
-                  layout="fill"
-                  objectFit="cover"
-                  objectPosition="left top"
-                  className="rounded-lg"
+                  alt={`${item.name} project header image`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 896px"
+                  className="rounded-lg object-cover object-left-top"
+                  priority
                 />
               </div>
             </header>
@@ -49,13 +49,11 @@ const ProjectPage = ({ project }: { project: any }) => {
                   {item.designs && (
                     <Image
                       src={item.designs || "/landscape.jpg"}
-                      alt="project image"
-                      layout=""
+                      alt={`${item.name} design mockup or diagram`}
                       width={650}
                       height={500}
-                      objectFit=""
-                      objectPosition=""
-                      className="rounded-lg"
+                      className="rounded-lg object-contain"
+                      sizes="(max-width: 768px) 100vw, 650px"
                     />
                   )}
                   {item.github && (

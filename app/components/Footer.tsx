@@ -10,9 +10,10 @@ const Footer = () => {
       <div className="w-full absolute left-0 -bottom-72 min-h-96">
         <Image
           src={"/footer-grid.svg"}
-          alt={"footer"}
-          layout="fill"
+          alt=""
+          fill
           className="w-full h-full opacity-50"
+          aria-hidden="true"
         />
       </div>
       <div className="flex flex-col items-center text-center">
@@ -24,7 +25,7 @@ const Footer = () => {
           Reach out to me today and let&apos;s discuss how I can help you
           achieve your goals
         </p>
-        <a href="mailto:wariiyu.nduati@gmail.com">
+        <a href="mailto:wariiyu.nduati@gmail.com" aria-label="Send email to wariiyu.nduati@gmail.com">
           <MagicButton title={"Let's Get in Touch"} />
         </a>
       </div>

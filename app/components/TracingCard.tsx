@@ -30,10 +30,12 @@ const TracingCard = ({ content }: { content: any }) => {
                 {item?.image && (
                   <Image
                     src={item.image}
-                    alt="blog thumbnail"
-                    height="1000"
-                    width="1000"
+                    alt={`${item.title} project thumbnail - ${item.desc?.substring(0, 50)}...`}
+                    height={1000}
+                    width={1000}
                     className="rounded-lg mb-10 object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    loading={index === 0 ? "eager" : "lazy"}
                   />
                 )}
                 <div className="tracking-wider pb-3">{item.desc}</div>

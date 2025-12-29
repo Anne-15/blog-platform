@@ -27,19 +27,21 @@ const Hero = () => {
           Where Ideas Take Flight <br /> Get Lost in My Creative Kaleidoscope
         </motion.h1>
       </LampContainer>
-      <motion.div
-        className="absolute bottom-8 transform -translate-x-1/2 cursor-pointer bg-gray-700 dark:bg-gray-300 p-3 mt-20 rounded-full"
+      <motion.button
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer bg-gray-700 dark:bg-gray-300 p-3 mt-20 rounded-full focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2"
         animate={{ y: [0, 15, 0] }}
         transition={{ repeat: Infinity, duration: 1.5 }}
         onClick={scrollToContent}
+        aria-label="Scroll down to view content"
+        type="button"
       >
-        
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-8 w-8 text-white dark:text-black"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
+          aria-hidden="true"
         >
           <path
             strokeLinecap="round"
@@ -48,7 +50,7 @@ const Hero = () => {
             d="M19 9l-7 7-7-7"
           />
         </svg>
-      </motion.div>
+      </motion.button>
     </div>
   );
 };

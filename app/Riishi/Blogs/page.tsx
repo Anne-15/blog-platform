@@ -1,4 +1,3 @@
-"use client";
 import DesignProjects from "@/app/components/designs/DesignProjects";
 import React from "react";
 import { alldesigns } from "./Requests";

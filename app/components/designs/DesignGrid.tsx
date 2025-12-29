@@ -62,17 +62,19 @@ export const DesignGrid = ({ cards }: { cards: Card[] }) => {
 const BlurImage = ({ card }: { card: Card }) => {
   const [loaded, setLoaded] = useState(false);
   return (
-    <Image
-      src={card.thumbnail}
-      height="500"
-      width="500"
-      onLoad={() => setLoaded(true)}
-      className={cn(
-        "object-cover object-top absolute inset-0 h-full w-full transition duration-200",
-        loaded ? "blur-none" : "blur-md"
-      )}
-      alt="thumbnail"
-    />
+            <div className="absolute inset-0">
+              <Image
+                src={card.thumbnail}
+                fill
+                onLoad={() => setLoaded(true)}
+                className={cn(
+                  "object-cover object-top transition duration-200",
+                  loaded ? "blur-none" : "blur-md"
+                )}
+                alt="Design project thumbnail"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+              />
+            </div>
   );
 };
 

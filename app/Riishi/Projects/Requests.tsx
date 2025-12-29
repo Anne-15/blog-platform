@@ -1,45 +1,57 @@
-import axios from "axios";
+import { db } from "@/drizzle/db";
+import { ProjectsTable } from "@/drizzle/schema";
+import { eq } from "drizzle-orm";
 
 export const allsoftwarePJS = async () => {
   try {
-    const res = await axios.get("https://www.riishi.net/api/projects");
-    return res.data;
+    const projects = await db.select().from(ProjectsTable).execute();
+    return { projects };
   } catch (error) {
     console.error("Error fetching projects:", error);
-    throw error; // Rethrow the error to handle it in the calling code
+    throw error;
   }
 };
 
 export const getoneProject = async (id: string) => {
   try {
-    const res = await axios.get("https://www.riishi.net/api/projects", {
-      params: { id: id },
-    });
-    return res.data;
+    const project = await db
+      .select()
+      .from(ProjectsTable)
+      .where(eq(ProjectsTable.id, Number(id)))
+      .execute();
+
+    if (project.length === 0) {
+      throw new Error("Project not found");
+    }
+
+    return { project: project[0] };
   } catch (error) {
-    console.error("Error fetching projects:", error);
-    throw error; // Rethrow the error to handle it in the calling code
+    console.error("Error fetching project:", error);
+    throw error;
   }
 };
 
 export const addProject = async (values: any) => {
   try {
-    const res = await axios.post(
-      "https://www.riishi.net/api/projects",
-      {
-        ...values,
+    const baseUrl = typeof window !== 'undefined' 
+      ? window.location.origin 
+      : process.env.NEXT_PUBLIC_BASE_URL || 'https://www.riishi.net';
+    
+    const res = await fetch(`${baseUrl}/api/projects`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
       },
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers": "Content-Type, Authorization",
-        },
-      }
-    );
-    return res.data;
+      body: JSON.stringify(values),
+    });
+
+    if (!res.ok) {
+      throw new Error(`Failed to create project: ${res.statusText}`);
+    }
+
+    return await res.json();
   } catch (error) {
-    console.error("Error fetching projects:", error);
-    throw error; // Rethrow the error to handle it in the calling code
+    console.error("Error creating project:", error);
+    throw error;
   }
 };

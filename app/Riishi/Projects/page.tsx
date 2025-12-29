@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { allsoftwarePJS } from "./Requests";
 import HeroSection from "@/app/components/projects/HeroSection";
 import ProjectContent from "@/app/components/projects/ProjectContent";

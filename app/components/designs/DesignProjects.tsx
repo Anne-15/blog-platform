@@ -57,10 +57,12 @@ const DesignProjects = ({ designs }: { designs: any }) => {
             >
               <Image
                 src={item.headerimage || `/landscape.jpg`}
-                alt={item.title}
+                alt={`${item.name} design project thumbnail`}
                 height={600}
                 width={600}
                 className="object-cover rounded-md"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
+                loading={i < 2 ? "eager" : "lazy"}
               />
               <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
                 {item.name}
@@ -68,8 +70,8 @@ const DesignProjects = ({ designs }: { designs: any }) => {
               <p className="text-sm text-neutral-600 dark:text-neutral-400">
                 {item.description}
               </p>
-              <Link href={`/Riishi/Blogs/${item.id}`}>
-                <button className="rounded-full pl-4 pr-1 py-1 text-white flex items-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800">
+              <Link href={`/Riishi/Blogs/${item.id}`} aria-label={`View case study for ${item.name}`}>
+                <button className="rounded-full pl-4 pr-1 py-1 text-white flex items-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800 hover:bg-gray-800 dark:hover:bg-zinc-700 transition-colors focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
                   <span className="bg-zinc-700 rounded-full text-[0.6rem] px-2 py-0 text-white">
                     Read Case Study
                   </span>

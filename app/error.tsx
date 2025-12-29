@@ -1,25 +1,43 @@
-"use client"
-import React from 'react'
-import { FC } from 'react';
+'use client';
 
-interface errorProps {
+import { useEffect } from 'react';
+import Link from 'next/link';
+
+export default function Error({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
   reset: () => void;
-}
+}) {
+  useEffect(() => {
+    // Log the error to an error reporting service
+    console.error('Application error:', error);
+  }, [error]);
 
-const Error: FC<errorProps> = ({ reset }) => {
   return (
-    <main className="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
-        <div className="text-center">
-            <p className="text-base font-semibold text-indigo-600">404</p>
-            <h1 className="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">Page not found</h1>
-            <p className="mt-6 text-base leading-7 text-gray-600">Sorry, we couldn't find the page you're looking for.</p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
-            <a href="/" className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Go back home</a>
-            <a href="#" className="text-sm font-semibold text-gray-900">Contact support <span aria-hidden="true">&rarr;</span></a>
-            </div>
-        </div>
-    </main>
-  )
+    <div className="flex flex-col items-center justify-center min-h-screen px-4">
+      <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+        Something went wrong!
+      </h2>
+      <p className="text-gray-600 dark:text-gray-400 mb-6 text-center max-w-md">
+        We encountered an unexpected error. Please try again or return to the homepage.
+      </p>
+      <div className="flex gap-4">
+        <button
+          onClick={reset}
+          className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+          aria-label="Try again"
+        >
+          Try again
+        </button>
+        <Link
+          href="/Riishi"
+          className="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+        >
+          Go home
+        </Link>
+      </div>
+    </div>
+  );
 }
-
-export default Error

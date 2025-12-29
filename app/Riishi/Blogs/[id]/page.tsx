@@ -5,7 +5,47 @@ import { cn } from "@/utils/cn";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { Metadata } from "next";
 import { getoneDesign } from "../Requests";
+
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+  try {
+    const designs = await getoneDesign(params.id);
+    const design = designs?.blog;
+    
+    if (!design) {
+      return {
+        title: "Design Project Not Found",
+        description: "The requested design project could not be found.",
+      };
+    }
+
+    const description = design.description?.substring(0, 160) || design.problemStatement?.substring(0, 160) || design.name;
+    const imageUrl = design.headerimage;
+
+    return {
+      title: design.name,
+      description: description,
+      openGraph: {
+        title: design.name,
+        description: description,
+        images: [imageUrl],
+        type: "website",
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: design.name,
+        description: description,
+        images: [imageUrl],
+      },
+    };
+  } catch (error) {
+    return {
+      title: "Design Project",
+      description: "View design project details",
+    };
+  }
+}
 
 const page = async ({ params }: { params: { id: string } }) => {
   const { id } = params;
@@ -30,10 +70,12 @@ const page = async ({ params }: { params: { id: string } }) => {
           <div className="w-full text-sm  prose prose-sm dark:prose-invert">
             <Image
               src={design.headerimage}
-              alt="blog thumbnail"
+              alt={`${design.name} design project header image`}
               height={400}
               width={400}
               className="rounded-lg mb-10 object-cover"
+              sizes="(max-width: 768px) 100vw, 400px"
+              priority
             />
           </div>
           <div className="space-y-3 text-center md:text-left">
@@ -99,10 +141,11 @@ const page = async ({ params }: { params: { id: string } }) => {
             <div className="mt-10">
               <Image
                 src={design.images}
-                alt={"analysis"}
+                alt={`${design.name} analysis diagram or mockup`}
                 width={600}
                 height={600}
                 className="w-full object-contain"
+                sizes="(max-width: 768px) 100vw, 600px"
               />
             </div>
           )}

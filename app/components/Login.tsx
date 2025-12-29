@@ -7,7 +7,7 @@ import { login } from "@/lib/auth";
 import { useRouter, useSearchParams } from "next/navigation";
 
 
-export async function Login() {
+export function Login() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const redirectTo = searchParams.get("redirectTo") || "/Riishi/AddProject";
