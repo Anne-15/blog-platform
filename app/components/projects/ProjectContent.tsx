@@ -1,16 +1,18 @@
 import React from "react";
+import Image from "next/image";
 import { BentoGrid, BentoGridItem } from "../ui/bento-grid";
-import {
-  IconClipboardCopy,
-  IconFileBroken,
-  IconSignature,
-  IconTableColumn,
-} from "@tabler/icons-react";
-import { SkeletonOne, SkeletonThree, SkeletonTwo } from "./Requests";
+import { IconArrowUpRight } from "@tabler/icons-react";
+
+const gridClasses = [
+  "md:col-span-2",
+  "md:col-span-1",
+  "md:col-span-1",
+  "md:col-span-2",
+];
 
 const ProjectContent = ({ softwaredata }: { softwaredata: any }) => {
   const projectitem = softwaredata?.projects;
-  const sortedProjects = projectitem?.sort((a:any, b:any) => {
+  const sortedProjects = projectitem?.sort((a: any, b: any) => {
     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
   });
   return (
@@ -28,12 +30,27 @@ const ProjectContent = ({ softwaredata }: { softwaredata: any }) => {
       <BentoGrid className="max-w-7xl md:auto-rows-[20rem] my-8">
         {sortedProjects.map((item: any, i: number) => (
           <BentoGridItem
-            key={i}
+            key={item.id}
             title={item.title}
             description={item.desc}
-            header={headers[i % headers.length].header}
-            className={classes[i % classes.length].className}
-            icon={icons[i % icons.length].icon}
+            header={
+              <div className="relative w-full h-full min-h-[10rem] rounded-lg overflow-hidden bg-neutral-100 dark:bg-neutral-900">
+                <Image
+                  src={item.image || "/landscape.jpg"}
+                  alt={item.name || item.title}
+                  fill
+                  className="object-cover rounded-lg"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  loading={i < 4 ? "eager" : "lazy"}
+                />
+              </div>
+            }
+            className={gridClasses[i % gridClasses.length]}
+            icon={
+              <span className="text-neutral-500 group-hover/bento:text-purple-500 transition-colors">
+                <IconArrowUpRight className="h-4 w-4" />
+              </span>
+            }
             link={`/Riishi/Projects/${item.id}`}
           />
         ))}
@@ -43,96 +60,3 @@ const ProjectContent = ({ softwaredata }: { softwaredata: any }) => {
 };
 
 export default ProjectContent;
-
-const headers = [
-  {
-    id: 1,
-    header: (
-      <span>
-        {" "}
-        <SkeletonOne />
-      </span>
-    ),
-  },
-  {
-    id: 2,
-    header: (
-      <span>
-        {" "}
-        <SkeletonThree />
-      </span>
-    ),
-  },
-  {
-    id: 3,
-    header: (
-      <span>
-        {" "}
-        <SkeletonTwo />
-      </span>
-    ),
-  },
-  {
-    id: 4,
-    header: (
-      <span>
-        {" "}
-        <SkeletonOne />
-      </span>
-    ),
-  },
-];
-
-const classes = [
-  {
-    id: 1,
-    className: "md:col-span-2",
-  },
-  {
-    id: 2,
-    className: "md:col-span-1",
-  },
-  {
-    id: 3,
-    className: "md:col-span-1",
-  },
-  {
-    id: 4,
-    className: "md:col-span-2",
-  },
-];
-
-const icons = [
-  {
-    id: 1,
-    icon: (
-      <span>
-        <IconClipboardCopy className="h-4 w-4 text-neutral-500" />
-      </span>
-    ),
-  },
-  {
-    id: 2,
-    icon: (
-      <span>
-        <IconFileBroken className="h-4 w-4 text-neutral-500" />
-      </span>
-    ),
-  },
-  {
-    id: 3,
-    icon: (
-      <span>
-        <IconSignature className="h-4 w-4 text-neutral-500" />
-      </span>
-    ),
-  },
-  {
-    id: 4,
-    icon: (
-      <span>
-        <IconTableColumn className="h-4 w-4 text-neutral-500" />
-      </span>
-    ),
-  },
-];

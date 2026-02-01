@@ -3,30 +3,56 @@ import React, { MouseEventHandler, useEffect, useState } from "react";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
-import { addProject } from "@/app/Riishi/Projects/api";
 import { default as NextImage } from "next/image";
-import { addDesign } from "@/app/Riishi/Blogs/api";
+import { addDesign, updateBlog } from "@/app/Riishi/Blogs/api";
 import Link from "next/link";
 import { Bounce, toast } from "react-toastify";
 
-const AddDesigns = () => {
+const defaultValues = {
+  name: "",
+  title: "",
+  category: "",
+  projectType: "",
+  role: "",
+  industry: "",
+  problemStatement: "",
+  description: "",
+  designLink: "",
+  headerimage: "",
+  contentHeader: "",
+  contentHeader2: "",
+  content: "",
+  images: "",
+  presentationLink: "",
+  conclusion: "",
+};
+
+type AddDesignsProps = {
+  initialData?: typeof defaultValues;
+  editId?: number;
+};
+
+const AddDesigns = ({ initialData, editId }: AddDesignsProps) => {
   const [imagePreview, setImagePreview] = useState<string | undefined>(
     undefined
   );
   const [designImage, setDesignImage] = useState<string | undefined>(undefined);
 
   useEffect(() => {
-    // if (typeof window !== "undefined") {
+    if (initialData) {
+      if (initialData.headerimage) setImagePreview(initialData.headerimage);
+      if (initialData.images) setDesignImage(initialData.images);
+      return;
+    }
     const coverImage = localStorage.getItem("header");
     if (coverImage) {
       setImagePreview("data:image/png;base64," + coverImage);
     }
-    const designImage = localStorage.getItem("images");
-    if (designImage) {
-      setDesignImage("data:image/png;base64," + designImage);
+    const designImageStored = localStorage.getItem("images");
+    if (designImageStored) {
+      setDesignImage("data:image/png;base64," + designImageStored);
     }
-    // }
-  }, []);
+  }, [initialData]);
 
   function compressAndSave(
     imgFile: File,
@@ -142,10 +168,20 @@ const AddDesigns = () => {
 
   const mutation = useMutation({
     mutationFn: async (values: any) => {
-      const data = await addDesign(values);
-      return data;
+      if (editId) return updateBlog(editId, values);
+      return addDesign(values);
     },
     onSuccess() {
+      if (editId) {
+        toast.success("Design project updated.", {
+          position: "top-right",
+          autoClose: 5000,
+          theme: "dark",
+          transition: Bounce,
+        });
+        router.push("/Riishi/Admin/Blogs");
+        return;
+      }
       formik.resetForm();
       handleRemoveImage("headerimage", "header", setImagePreview);
       handleRemoveImage("designs", "images", setDesignImage);
@@ -177,25 +213,8 @@ const AddDesigns = () => {
   });
 
   const formik = useFormik({
-    initialValues: {
-      name: "",
-      title: "",
-      category: "",
-      projectType: "",
-      role: "",
-      industry: "",
-      problemStatement: "",
-      description: "",
-      designLink: "",
-      headerimage: "",
-      contentHeader: "",
-      contentHeader2: "",
-      content: "",
-      images: "",
-      presentationLink: "",
-      conclusion: "",
-    },
-    // validationSchema: {},
+    initialValues: initialData ?? defaultValues,
+    enableReinitialize: !!editId,
     onSubmit: (values) => {
       mutation.mutate(values);
     },

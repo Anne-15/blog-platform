@@ -2,33 +2,51 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowLeft } from "react-icons/fa";
-import Navbar from "../Navbar";
 import { LinkPreview } from "../ui/link-preview";
+import { cn } from "@/utils/cn";
 
 const ProjectPage = ({ project }: { project: any }) => {
   const item = project.project;
 
+  const Section = ({
+    title,
+    children,
+    className,
+  }: {
+    title: string;
+    children: React.ReactNode;
+    className?: string;
+  }) => (
+    <section className={cn("py-8 border-b border-neutral-200 dark:border-neutral-800 last:border-b-0", className)}>
+      <h2 className="text-lg font-semibold text-neutral-900 dark:text-white mb-4">
+        {title}
+      </h2>
+      <div className="prose prose-sm dark:prose-invert max-w-none text-neutral-700 dark:text-neutral-300 leading-relaxed">
+        {children}
+      </div>
+    </section>
+  );
+
   return (
     <>
-      <Navbar />
       <div className="flex-1 min-h-screen overflow-y-auto">
         <main className="max-w-4xl w-full mx-auto pb-10 pt-20 px-4 md:px-10">
           <article>
             <header className="flex flex-col">
               <div className="flex justify-between items-center">
-                <Link href="/Riishi/Projects" aria-label="Navigate back to projects">
+                <Link
+                  href="/Riishi/Projects"
+                  aria-label="Navigate back to projects"
+                >
                   <div className="rounded-full hover:shadow-md w-10 h-10 flex items-center justify-center border cursor-pointer">
                     <FaArrowLeft aria-hidden="true" />
                   </div>
                 </Link>
-                {/* <button className="font-bold text-purple-800 dark:hover:text-purple-400 dark:text-purple-200">
-                  update project
-                </button> */}
               </div>
-              <h1 className="text-base md:text-xl lg:text-4xl font-semibold bg-clip-text py-4">
+              <h1 className="text-base md:text-xl lg:text-4xl font-semibold bg-clip-text py-4 text-neutral-900 dark:text-white">
                 {item.name}
               </h1>
-              <div className="w-full mt-4 aspect-video bg-gray-100 rounded-lg overflow-hidden relative">
+              <div className="w-full mt-4 aspect-video bg-neutral-100 dark:bg-neutral-900 rounded-lg overflow-hidden relative">
                 <Image
                   src={item.image || "/landscape.jpg"}
                   alt={`${item.name} project header image`}
@@ -39,41 +57,79 @@ const ProjectPage = ({ project }: { project: any }) => {
                 />
               </div>
             </header>
-            <div className="mt-8 space-y-3">
-              <p>{item.desc}</p>
-              <p>{item.backgroundInfo}</p>
-              <p>{item.objectives}</p>
 
-              <div className="flex items-center justify-center">
-                <div className="flex flex-col">
-                  {item.designs && (
+            <Section title="The gist">
+              <p>{item.desc}</p>
+            </Section>
+
+            {item.backgroundInfo && (
+              <Section title="Background">
+                <p>{item.backgroundInfo}</p>
+              </Section>
+            )}
+
+            {item.objectives && (
+              <Section title="Objectives">
+                <p>{item.objectives}</p>
+              </Section>
+            )}
+
+            {item.functionaliy && (
+              <Section title="What I built">
+                <p>{item.functionaliy}</p>
+              </Section>
+            )}
+
+            {item.designs && (
+              <Section title="Design">
+                <div className="flex justify-center">
+                  <div className="relative w-full max-w-2xl aspect-[4/3] rounded-lg overflow-hidden bg-neutral-100 dark:bg-neutral-900">
                     <Image
-                      src={item.designs || "/landscape.jpg"}
+                      src={item.designs}
                       alt={`${item.name} design mockup or diagram`}
-                      width={650}
-                      height={500}
+                      fill
                       className="rounded-lg object-contain"
                       sizes="(max-width: 768px) 100vw, 650px"
                     />
-                  )}
+                  </div>
+                </div>
+              </Section>
+            )}
+
+            {(item.github || item.siteurl) && (
+              <Section title="Links">
+                <div className="flex flex-wrap gap-4">
                   {item.github && (
-                    <div className="text-center py-6">
-                      Check the source code of the project on GitHub.{" "}
+                    <span>
+                      Source code:{" "}
                       <LinkPreview
                         url={item.github}
-                        className="font-bold text-purple-800 dark:text-purple-200"
+                        className="font-semibold text-purple-600 dark:text-purple-400 hover:underline"
                       >
-                        Github Project Link
-                      </LinkPreview>{" "}
-                    </div>
+                        View on GitHub
+                      </LinkPreview>
+                    </span>
+                  )}
+                  {item.siteurl && (
+                    <span>
+                      Live site:{" "}
+                      <LinkPreview
+                        url={item.siteurl}
+                        className="font-semibold text-purple-600 dark:text-purple-400 hover:underline"
+                      >
+                        Visit project
+                      </LinkPreview>
+                    </span>
                   )}
                 </div>
-              </div>
+              </Section>
+            )}
 
-              <p>{item.functionaliy}</p>
-              <p>{item.conclusion}</p>
-            </div>
-            <div className="flex justify-end"></div>
+            {item.conclusion && (
+              <Section title="Conclusion">
+                <p>{item.conclusion}</p>
+              </Section>
+            )}
           </article>
         </main>
       </div>

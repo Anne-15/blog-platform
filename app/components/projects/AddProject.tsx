@@ -2,35 +2,59 @@
 import React, { MouseEventHandler, useEffect, useState } from "react";
 import { default as NextImage } from "next/image";
 import { useMutation } from "@tanstack/react-query";
-import { addProject } from "@/app/Riishi/Projects/api";
+import { addProject, updateProject } from "@/app/Riishi/Projects/api";
 import { useFormik } from "formik";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Bounce, toast } from "react-toastify";
+import { Button } from "@/shadcn/ui/button";
+import { ArrowLeftIcon } from "lucide-react";
 
-const AddProject = () => {
+const defaultValues = {
+  name: "",
+  title: "",
+  desc: "",
+  headerimage: "",
+  backgroundInfo: "",
+  objectives: "",
+  functionaliy: "",
+  designs: "",
+  github: "",
+  url: "",
+  conclusion: "",
+};
+
+type AddProjectProps = {
+  initialData?: typeof defaultValues;
+  editId?: number;
+};
+
+const AddProject = ({ initialData, editId }: AddProjectProps) => {
   const [imagePreview, setImagePreview] = useState<string | undefined>(
-    undefined
+    undefined,
   );
   const [designImage, setDesignImage] = useState<string | undefined>(undefined);
 
-  //   console.log(imagePreview, designImage);
-
   useEffect(() => {
+    if (initialData) {
+      if (initialData.headerimage) setImagePreview(initialData.headerimage);
+      if (initialData.designs) setDesignImage(initialData.designs);
+      return;
+    }
     const coverImage = localStorage.getItem("cover");
     if (coverImage) {
       setImagePreview("data:image/png;base64," + coverImage);
     }
-    const designImage = localStorage.getItem("design");
-    if (designImage) {
-      setDesignImage("data:image/png;base64," + designImage);
+    const designImageStored = localStorage.getItem("design");
+    if (designImageStored) {
+      setDesignImage("data:image/png;base64," + designImageStored);
     }
-  }, []);
+  }, [initialData]);
 
   function compressAndSave(
     imgFile: File,
     itemName: string,
-    imgState: (imageDate: string) => void
+    imgState: (imageDate: string) => void,
   ) {
     if (imgFile.size > 300000) {
       const reader = new FileReader();
@@ -61,7 +85,7 @@ const AddProject = () => {
     resizingFactor: number,
     quality: number,
     itemName: string,
-    imgState: (imageDate: string) => void
+    imgState: (imageDate: string) => void,
   ) {
     imgToCompress.onload = () => {
       // resizing the image
@@ -79,7 +103,7 @@ const AddProject = () => {
         0,
         0,
         originalWidth * resizingFactor,
-        originalHeight * resizingFactor
+        originalHeight * resizingFactor,
       );
       // reducing the quality of the image
       canvas.toBlob(
@@ -100,7 +124,7 @@ const AddProject = () => {
           }
         },
         "image/jpeg",
-        quality
+        quality,
       );
     };
   }
@@ -108,7 +132,7 @@ const AddProject = () => {
   const handleImageChange = (
     event: React.ChangeEvent<HTMLInputElement>,
     itemName: string,
-    imgState: (imageDate: string) => void
+    imgState: (imageDate: string) => void,
   ) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -119,17 +143,17 @@ const AddProject = () => {
   const handleRemoveImage: (
     fileInputName: string,
     itemName: string,
-    imgState: (imageData: any) => void
+    imgState: (imageData: any) => void,
   ) => MouseEventHandler<HTMLButtonElement> | undefined = (
     fileInputName,
     itemName,
-    imgState
+    imgState,
   ) => {
     return (event) => {
       imgState(undefined);
       localStorage.removeItem(itemName);
       const fileInput = document.getElementById(
-        fileInputName
+        fileInputName,
       ) as HTMLInputElement;
       if (fileInput) {
         fileInput.value = "";
@@ -141,10 +165,21 @@ const AddProject = () => {
 
   const mutation = useMutation({
     mutationFn: async (values: any) => {
-      const data = await addProject(values);
-      return data;
+      const payload = { ...values, siteurl: values.url };
+      if (editId) return updateProject(editId, payload);
+      return addProject(payload);
     },
     onSuccess() {
+      if (editId) {
+        toast.success("Project updated.", {
+          position: "top-right",
+          autoClose: 5000,
+          theme: "dark",
+          transition: Bounce,
+        });
+        router.push("/Admin/Projects");
+        return;
+      }
       formik.resetForm();
       handleRemoveImage("headerimage", "cover", setImagePreview);
       handleRemoveImage("designs", "design", setDesignImage);
@@ -176,21 +211,10 @@ const AddProject = () => {
   });
 
   const formik = useFormik({
-    initialValues: {
-      name: "",
-      title: "",
-      desc: "",
-      headerimage: "",
-      backgroundInfo: "",
-      objectives: "",
-      functionaliy: "",
-      designs: "",
-      github: "",
-      url: "",
-      conclusion: "",
-    },
+    initialValues: initialData ?? defaultValues,
+    enableReinitialize: !!editId,
     onSubmit: (values) => {
-      mutation.mutate(values);
+      mutation.mutate({ ...values, siteurl: values.url });
     },
   });
 
@@ -210,6 +234,7 @@ const AddProject = () => {
           onSubmit={formik.handleSubmit}
         >
           <div className="space-y-12">
+
             <div className="border-gray-900/10 dark:border-gray-100 ">
               <h2 className="text-base font-semibold leading-7 text-gray-900 dark:text-gray-200">
                 Software Project
@@ -397,7 +422,7 @@ const AddProject = () => {
                       onClick={handleRemoveImage(
                         "headerimage",
                         "cover",
-                        setImagePreview
+                        setImagePreview,
                       )}
                       className="relative text-small cursor-pointer rounded-md bg-white font-semibold text-red-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-red-600 focus-within:ring-offset-2 hover:text-red-500"
                     >
@@ -520,7 +545,7 @@ const AddProject = () => {
                               handleImageChange(
                                 event,
                                 "design",
-                                setDesignImage
+                                setDesignImage,
                               );
                             }}
                           />
@@ -539,7 +564,7 @@ const AddProject = () => {
                         onClick={handleRemoveImage(
                           "designs",
                           "design",
-                          setDesignImage
+                          setDesignImage,
                         )}
                         className="relative text-small cursor-pointer rounded-md bg-white font-semibold text-red-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-red-600 focus-within:ring-offset-2 hover:text-red-500"
                       >

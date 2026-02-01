@@ -1,23 +1,41 @@
 import { NextRequest, NextResponse } from "next/server";
+import { updateSession } from "@/lib/session";
 
 export async function middleware(request: NextRequest) {
   const session = request.cookies.get("session")?.value;
-  const protectedRoutes = ["/Riishi/AddProject", "/Riishi/AddDesign"];
+  const path = request.nextUrl.pathname;
+  const isProtected =
+    path === "/Riishi/AddProject" ||
+    path === "/Riishi/AddDesign" ||
+    path.startsWith("/Riishi/Admin") ||
+    path.startsWith("/Riishi/Projects/Edit/") ||
+    path.startsWith("/Riishi/Blogs/Edit/");
 
-  // Check if the requested route is protected and there is no session
-  if (protectedRoutes.includes(request.nextUrl.pathname) && !session) {
-    // Redirect to login page
+  if (isProtected && !session) {
     const loginUrl = new URL("/Login", request.url);
-    loginUrl.searchParams.set("redirectTo", request.nextUrl.pathname);
+    loginUrl.searchParams.set("redirectTo", path);
     return NextResponse.redirect(loginUrl);
   }
 
-  // await updateSession(request);
+  // Refresh session cookie on each request so you stay logged in
+  if (isProtected && session) {
+    const res = await updateSession(request);
+    if (res) return res;
+  }
+
   return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/(api|trpc)(.*)", "/Riishi/AddProject", "/Riishi/AddDesign"],
+  matcher: [
+    "/(api|trpc)(.*)",
+    "/Riishi/AddProject",
+    "/Riishi/AddDesign",
+    "/Riishi/Admin",
+    "/Riishi/Admin/:path*",
+    "/Riishi/Projects/Edit/:path*",
+    "/Riishi/Blogs/Edit/:path*",
+  ],
 };
 
 // const publicroutes = ["/"];

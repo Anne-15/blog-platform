@@ -2,7 +2,7 @@ import { db } from "@/drizzle/db";
 import { UserTable } from "@/drizzle/schema";
 import { eq } from "drizzle-orm";
 import { NextRequest, NextResponse } from "next/server";
-const bcrypt = require('bcrypt');
+import bcrypt from "bcryptjs";
 
 let saltRounds = 10;
 

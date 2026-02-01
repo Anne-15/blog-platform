@@ -37,6 +37,25 @@ The project was an exploration of NextJS's extensive capabilities in frontend, b
 - Explored and utilized NextJS for both frontend and backend capabilities.
 - Implemented a clean and responsive design using Tailwind CSS, enhancing user experience.
 
+## Admin credentials
+
+Admin login uses the **user** table (email + bcrypt password). If you forget your password:
+
+1. Add a reset secret to `.env.local`:
+   ```bash
+   ADMIN_RESET_SECRET=your-secret-string-here
+   ```
+2. Call the reset API (from your machine or Postman):
+   ```bash
+   curl -X POST http://localhost:3000/api/users/reset-password \
+     -H "Content-Type: application/json" \
+     -d '{"email":"your@email.com","newPassword":"your-new-password","secret":"your-secret-string-here"}'
+   ```
+3. Log in at `/Login` with that email and the new password.
+4. Remove or change `ADMIN_RESET_SECRET` after resetting.
+
+If you don’t know your admin email, check the **user** table in your database (e.g. via your DB provider’s console or a local script that queries it).
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

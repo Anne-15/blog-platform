@@ -1,67 +1,50 @@
-'use server'
+"use server";
 import { db } from "@/drizzle/db";
 import { UserTable } from "@/drizzle/schema";
 import { eq } from "drizzle-orm";
-import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
-import { NextRequest, NextResponse } from "next/server";
-
-const secretKey = process.env.AUTH_SECRET;
-const key = new TextEncoder().encode(secretKey);
-
-export async function encrypt(payload: any) {
-  return await new SignJWT(payload)
-    .setProtectedHeader({ alg: "HS256" })
-    .setIssuedAt()
-    .setExpirationTime("10s")
-    .sign(key);
-}
-
-export async function decrypt(input: string): Promise<any> {
-  const { payload } = await jwtVerify(input, key, {
-    algorithms: ["HS256"],
-  });
-  return payload;
-}
+import { NextRequest } from "next/server";
+import bcrypt from "bcryptjs";
+import { encrypt, SESSION_MAX_AGE_SECONDS } from "@/lib/session";
 
 export async function login(formData: FormData) {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
 
-  const user = await db
+  if (!email || !password) {
+    throw new Error("Email and password are required.");
+  }
+
+  const rows = await db
     .select()
     .from(UserTable)
     .where(eq(UserTable.email, email))
     .execute();
 
-  const expires = new Date(Date.now() + 10 * 1000);
+  if (rows.length === 0) {
+    throw new Error("Invalid email or password.");
+  }
+
+  const user = rows[0];
+  const valid = await bcrypt.compare(password, user.password);
+  if (!valid) {
+    throw new Error("Invalid email or password.");
+  }
+
+  const expires = new Date(Date.now() + SESSION_MAX_AGE_SECONDS * 1000);
   const session = await encrypt({ user, expires });
 
-  cookies().set("session", session, { expires, httpOnly: true });
+  cookies().set("session", session, { expires, httpOnly: true, path: "/", sameSite: "lax" });
 }
 
 export async function logout() {
   cookies().set("session", "", { expires: new Date(0) });
 }
 
+import { decrypt } from "@/lib/session";
+
 export async function getSession(request?: NextRequest) {
   const sessionCookie = request?.cookies.get("session")?.value || cookies().get("session")?.value;
   if (!sessionCookie) return null;
   return await decrypt(sessionCookie);
-}
-
-export async function updateSession(request: NextRequest) {
-  const session = request.cookies.get("session")?.value;
-  if (!session) return;
-
-  const parsed = await decrypt(session);
-  parsed.expires = new Date(Date.now() + 10 * 1000);
-  const res = NextResponse.next();
-  res.cookies.set({
-    name: "session",
-    value: await encrypt(parsed),
-    httpOnly: true,
-    expires: parsed.expires,
-  });
-  return res;
 }
